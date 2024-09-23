@@ -29,6 +29,20 @@ body {
     color: #4F200D;
   }
   
+
+.image-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 100%;
+  height: 100vh; /
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto; 
+}
+
   .testimonial {
     background-color: #FFF1E9;
     border-radius: 10px;
@@ -53,6 +67,8 @@ body {
   }
   
   #health-tips button {
+    display: block;
+    margin: auto;
     background-color: #4F200D;
     color: white;
     padding: 10px;
@@ -96,7 +112,7 @@ body {
     border: 1px solid #4F200D;
     width: 80%;
   }
-  
+
   #newsletter-signup button {
     background-color: #FF8400;
     padding: 10px;
@@ -228,4 +244,43 @@ body {
     color: white;
     text-align: center;
     padding: 15px;
+}
+h2{
+  text-align: center;
+}
+
+a {
+  color: #FF8400; 
+  text-decoration: none; 
+  font-weight: bold; 
+
+}
+
+a:hover {
+  color: #FFD93D; 
+  text-decoration: underline;
+  transition: color 0.3s ease; 
+}
+
+
+a:active {
+  color: #4F200D; 
+  background-color: #FFD93D; 
+  padding: 2px 4px;
+}
+
+a:visited {
+  color: #4F200D; 
+}
+
+nav ul li a {
+  color: #4F200D; 
+  padding: 10px 20px;
+  background-color: #FFD93D;
+  border-radius: 5px;
+}
+
+nav ul li a:hover {
+  background-color: #FF8400; 
+  color: white; 
 }
