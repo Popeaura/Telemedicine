@@ -4,13 +4,14 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Telemedicine Website</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
      <link rel="stylesheet" href="styles.css">
     </head>
     <body>
 
        <div class="grid-container">
             <div class="header">
-             <h1>Elysium Health Center </h1>
+             <h1>Elysium Health Center </h1><hr>
             </div>
         
             <div class="nav">
@@ -21,8 +22,10 @@
                      <li><a href="#services">Services</a></li>
                      <li><a href="#contact">Contact</a></li>
                     </ul>
+             
                 </nav>
-            </div>
+                
+              </div>
 
             <div class="main">
               <section id="home">
@@ -30,13 +33,16 @@
 
                   <h2>Connect with Doctors Anytime, Anywhere</h2>
                    <p>Get virtual medical consultations from the comfort of your home.</p>
-                 <button onclick="bookAppointment()">Book an Appointment</button>
-                 </div><img src="Assets/Doctor_Cartoon_Character_Stock_Vector_Image___Art_-_Alamy-removebg-preview.png" alt="doctor">
-                </section>
+                 <button>Book an Appointment</button>
+                 </div>
+                 <div class="image-container"><img src="Assets/Doctor_Cartoon_Character_Stock_Vector_Image___Art_-_Alamy-removebg-preview.png" alt="doctor"></div>
+                   
+                 
+                  </section>
     
         
                <section id="about">
-                  <h2>About TeleMed</h2>
+                  <h2>About TeleMed</h2><hr>
         
     
                   <p> At TeleMed, we make healthcare accessible, convenient, and affordable. Our mission is to connect patients with certified medical professionals through secure and reliable virtual consultations.</p>
@@ -54,7 +60,7 @@
        
 
                 <section id="services">
-                                 <h2>Our Services</h2>
+                                 <h2>Our Services</h2><hr>
                                 <div class="services">
                                     <div class="service-box">
                                      <h3>Online Consultation</h3>
@@ -74,7 +80,7 @@
 
 
                 <section id="contact">
-                   <h2>Contact Us</h2>
+                   <h2>Contact Us</h2><hr>
                  <form id="contact-form">
                      <label for="name">Name:</label>
                      <input type="text" id="name" name="name" required>
@@ -108,36 +114,44 @@
     </div>
   </section>
 
-  <!-- Health Tips -->
+  
   <section id="health-tips">
     <h2>Daily Health Tips</h2>
     <p id="tip">Stay hydrated, drink at least 8 cups of water daily!</p>
-    <button>Next Tip</button>
+    <button class="b">Next Tip</button>
   </section>
 
-  <!-- Featured Doctors -->
+
   <section id="featured-doctors">
-    <h2>Featured Doctors</h2>
+    <h2>Featured Doctors</h2><br><br>
     <div class="doctor">
-      <img src="Assets/first-aid-kit_7838289.png" alt="Doctor 1">
+      <i class="fa-solid fa-user-doctor"></i>
       <p>Dr. Alice Smith</p>
       <p>Cardiologist</p>
     </div>
     <div class="doctor">
-      <img src="Assets/first-aid-kit_7838289.png" alt="Doctor 2">
+      <i class="fa-solid fa-user-doctor"></i>
       <p>Dr. John Doe</p>
       <p>Dermatologist</p>
     </div>
   </section>
 
-  <!-- Newsletter Signup -->
   <section id="newsletter-signup">
-    <h2>Subscribe to Our Newsletter</h2>
+    <h2>Subscribe to Our Newsletter</h2><br><br>
     <form>
       <input type="email" placeholder="Enter your email">
       <button type="submit">Subscribe</button>
     </form>
-  </section>
+  </section><br><br><br>
+
+
+  <Section class="socials">
+    <h2>Out Social Media Platforms<br><br>
+    <i class="fa-brands fa-instagram"><a href="">Instagram</a></i><br><br>
+    <i class="fa-brands fa-square-x-twitter"><a href="">Twitter</a></i><br><br>
+    <i class="fa-brands fa-linkedin"><a href="">Linkedin</a></i><br><br>
+  </Section>
+
 </div>
 
 
