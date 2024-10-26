@@ -1,0 +1,17 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+ul li img{
+    display: flex;  
+    
+
+}
+a { padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+img{
+    width: 30px;
+}
