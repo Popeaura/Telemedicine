@@ -10,9 +10,22 @@ a { padding: 10px;
 ul a:hover {
     border-bottom: 2px solid aquamarine;
     color: brown;
-
 }
 
-img{
-    width: 30px;
+#home{
+    background-color: rgb(67, 241, 227);
+    height: 50vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+.text{
+    color: azure;
+    margin-bottom: 10px;
+}
+
+.img-container img{
+    width: 200px;
+    margin-bottom: 10px; 
 }
