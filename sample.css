@@ -1,15 +1,16 @@
 nav{
     display: flex;
     justify-content: space-between;
-}
-ul li img{
-    display: flex;  
-    
-
+    max-height: 20vh;
 }
 a { padding: 10px;
     text-decoration: none;
     color: black;
+}
+ul a:hover {
+    border-bottom: 2px solid aquamarine;
+    color: brown;
+
 }
 
 img{
