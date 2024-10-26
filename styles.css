@@ -11,23 +11,7 @@ body {
     color: #4F200D; 
 }
 
-.grid-container {
-    display: grid;
-    grid-template-areas: 
-        "header header header"
-        "nav main sidebar"
-        "footer footer footer";
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: auto 1fr auto;
-    gap: 20px;
-    min-height: 100vh;
-    padding: 20px;
-}
-.sidebar {
-    background-color: #FFD93D;
-    padding: 20px;
-    color: #4F200D;
-  }
+
   
 
 .image-container {
