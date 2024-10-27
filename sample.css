@@ -29,13 +29,21 @@ ul a:hover {
     width: 200px;
     margin-bottom: 10px; 
 }
-.cloe{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color:rgb(248, 247, 245);
-    height:10vh;
+.cloe {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: rgb(248, 247, 245);
+    height: 10vh;
+    align-items: center; 
+    justify-items: center; 
 }
-.container{
+
+/* Styling for .container */
+.container {
     color: gray;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    background-color: rgb(248, 247, 245);
+    gap: 20px; 
+    text-align: center; 
 }
