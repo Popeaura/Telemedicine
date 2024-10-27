@@ -44,3 +44,11 @@ ul a:hover {
     background-color: rgb(248, 247, 245);
     text-align: center; 
 }
+img{
+    width: 500px;
+}
+
+.Nurses{
+    display: flex;
+    justify-content: space-around;
+}
