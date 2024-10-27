@@ -20,10 +20,7 @@ ul a:hover {
     align-items: center;
     padding: 20px;
 }
-.text{
-    color: azure;
-    margin-bottom: 10px;
-}
+
 
 .img-container img{
     width: 200px;
@@ -76,3 +73,64 @@ button{
 .text{
     text-align: center;
 }
+
+/*section */
+section {
+  background-color: #f4f4f4; 
+  padding: 40px 20px;
+}
+
+/* Service container*/
+.service {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px; 
+}
+
+/* service box styling */
+.service-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.service-container h3 {
+  color: #333333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.service-container img {
+  width: 80px;
+  margin: 20px 0;
+  border-radius: 50%;
+}
+
+.service-container p {
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-container button {
+  background-color:#fff;
+  color: black;
+  padding: 10px 20px;
+  border: 2px solid rgb(67, 241, 227);;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.service-container button:hover {
+  background-color: rgb(8, 170, 157);
+}
+
+.service-container:hover {
+  transform: translateY(-5px);
+}
+
