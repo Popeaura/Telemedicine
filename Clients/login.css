@@ -90,6 +90,7 @@ nav a:hover {
     padding: 20px 40px;
     border-radius: 8px;
     color: #4f200d;
+    height: 40vh;
 }
 
 .footer-container {
