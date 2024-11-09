@@ -90,7 +90,6 @@ nav a:hover {
     padding: 20px 40px;
     border-radius: 8px;
     color: #4f200d;
-    margin-top: 40px;
 }
 
 .footer-container {
@@ -136,6 +135,11 @@ nav a:hover {
     gap: 10px;
 }
 
+.footer-links img {
+    width: 24px;
+    height: 24px;
+}
+
 .footer-contact a {
     color: rgb(8, 170, 157);
     text-decoration: none;
@@ -149,13 +153,11 @@ nav a:hover {
     font-size: 14px;
     color: #4f200d;
 }
-
-/* Responsive Design */
 @media (max-width: 768px) {
-    nav h3 {
-        font-size: 18px;
-    }
-    .footer-container {
-        flex-direction: column;
-    }
+  nav h3 {
+    font-size: 18px;
+  }
+  .text-1 h2 {
+    font-size: 24px;
+  }
 }
