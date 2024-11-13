@@ -21,15 +21,47 @@
 <section id="register" class="container">
     <h2>Register</h2>
     <form class="form-container" action="register.php" method="POST">
-        <label for="new-username">Username</label>
+       
+      <label for="firstname">Enter Your First Name:</label>
+      <input type="text" id="firstname" name="firstname" placeholder="First name" required><br><br>
+
+
+      <label for="lastname">Enter Your Last Name:</label>
+      <input type="text" id="lastname" name="lastname" placeholder="Last name" required><br><br>
+        
+      
+      <label for="age">Enter Your Age:</label>
+      <input type="number" id="age" name="age" placeholder="Age" required><br><br>
+
+      
+      <label>Select Your Gender:</label>
+      <label for="Male">Male</label>
+      <input type="radio" id="Male" name="gender" value="Male" required>
+      <label for="female">Female</label>
+      <input type="radio" id="female" name="gender" value="Female">
+      <label for="others">Others</label>
+
+      <input type="radio" id="others" name="gender" value="Others">
+      <span id="genderError" class="error"></span>
+
+
+
+      <label for="email">Enter Your Email:</label>
+      <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+
+      <label for="tel">Enter Your Phone Number:</label>
+      <input type="tel" id="tel" name="tel" placeholder="Phone number" required><br><br>
+
+        
+        
+        <label for="new-username">Username :</label>
         <input type="text" id="new-username" name="username" required>
         
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+
+        <label for="password">Enter Your Password:</label>
+        <input type="password" id="password" name="password" placeholder="Password" required><br><br>
         
-        <label for="new-password">Password</label>
-        <input type="password" id="new-password" name="password" required>
-        
+      
         <button type="submit">Register</button>
     </form>
 </section>
@@ -79,6 +111,7 @@
       <p>&copy; 2024 MEDIHUB website. All rights reserved.</p>
     </div>
   </footer>
+  <script src="register.js"></script>
 
 </body>
 </html>
