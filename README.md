@@ -1,2 +1,2 @@
 # Telemedicine
-git-readme-stats
+
