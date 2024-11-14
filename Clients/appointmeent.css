@@ -13,3 +13,30 @@ nav{
     padding: 15px 30px;
     background-color: #43f1e3;
 }
+
+nav h3{
+    font-size: 24px;
+    color: black;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+nav a:hover{
+    color: brown;
+}
+
+/* Appointment form section */
+
+#appointment.container {
+max-width: 600px;
+margin: 50px auto;
+}
