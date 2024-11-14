@@ -64,10 +64,104 @@ nav a:hover{
 .appointment-form input, 
 .appointment-form select, 
 .appointment-form textarea {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin: 8px 0 15px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+}
+
+
+.appointment-form button {
+    width: 100%;
+    background-color: #08aa9d;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.appointment-form button:hover {
+    background-color: #067c71;
+}
+
+#footer {
+    background-color: #f6f1e9;
+    padding: 20px 40px;
+    border-radius: 8px;
+    color: #4f200d;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-about, .footer-links, .footer-contact {
+    flex: 1;
+    min-width: 200px;
+}
+
+#footer h3, #footer h4 {
+    color: rgb(8, 170, 157);
+    border-bottom: 2px solid rgb(8, 170, 157);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.footer-about p, .footer-contact p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.footer-links li {
+    margin: 10px 0;
+}
+
+.footer-links a {
+    color: rgb(8, 170, 157);
+    font-size: 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-links img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-contact a {
+    color: rgb(8, 170, 157);
+    text-decoration: none;
+}
+
+.footer-bottom {
+    border-top: 2px solid rgb(8, 170, 157);
+    text-align: center;
+    padding-top: 15px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #4f200d;
+}
+@media (max-width: 768px) {
+  nav h3 {
+    font-size: 18px;
+  }
+  .text-1 h2 {
+    font-size: 24px;
+  }
 }
