@@ -32,7 +32,7 @@ nav a:hover {
 }
 
 /* Register Form Section */
-#register.container {
+.container {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
@@ -67,21 +67,22 @@ nav a:hover {
     font-size: 16px;
     color: #333;
 }
+
 .form-container button {
-    background-color:#fff;
+    background-color: #fff;
     color: black;
     padding: 10px 20px;
-    border: 2px solid rgb(67, 241, 227);;
+    border: 2px solid rgb(67, 241, 227);
     border-radius: 8px;
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.form-container button:hover {
+button:hover {
     background-color: rgb(8, 170, 157);
 }
-/* Footer Styling */
+
 
 /* Footer Styling */
 #footer {
@@ -95,7 +96,7 @@ nav a:hover {
 .footer-container {
     display: flex;
     justify-content: space-between;
-    gap: 30px;
+    gap: 30px;bua
     flex-wrap: wrap;
 }
 
@@ -153,12 +154,9 @@ nav a:hover {
     font-size: 14px;
     color: #4f200d;
 }
-@media (max-width: 768px) {
-  nav h3 {
-    font-size: 18px;
-  }
-  .text-1 h2 {
-    font-size: 24px;
-  }
-}
 
+@media (max-width: 768px) {
+    nav h3 {
+        font-size: 18px;
+    }
+}
