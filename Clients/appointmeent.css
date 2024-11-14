@@ -1,3 +1,5 @@
+/* appointment.css */
+
 /* Resets */
 * {
     box-sizing: border-box;
@@ -5,19 +7,21 @@
     padding: 0;
 }
 
-/*Navigation bar */
-nav{
+/* Navigation bar */
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
     background-color: #43f1e3;
+    text-align: center;
 }
 
-nav h3{
+nav h3 {
     font-size: 24px;
     color: black;
 }
+
 nav ul {
     list-style: none;
     display: flex;
@@ -30,14 +34,13 @@ nav a {
     font-size: 16px;
 }
 
-nav a:hover{
+nav a:hover {
     color: brown;
 }
 
 /* Appointment form section */
-
 #appointment.container {
-    max-width: 400px;
+    max-width: 600px;
     margin: 50px auto;
     padding: 20px;
     background-color: #f8f7f5;
@@ -54,11 +57,13 @@ nav a:hover{
     margin-bottom: 20px;
     text-align: center;
 }
+
 .appointment-form label {
     font-size: 16px;
     color: #333;
     margin-top: 10px;
     display: block;
+    text-align: center;
 }
 
 .appointment-form input, 
@@ -66,28 +71,29 @@ nav a:hover{
 .appointment-form textarea {
     width: 80%;
     padding: 10px;
-    margin: 8px 0 15px 0;
+    margin: 8px auto;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    display: block;
 }
 
-
 .appointment-form button {
-    background-color:#fff;
+    background-color: #fff;
     color: black;
     padding: 10px 20px;
-    border: 2px solid rgb(67, 241, 227);;
+    border: 2px solid rgb(67, 241, 227);
     border-radius: 8px;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s; 
+    transition: background-color 0.3s;
 }
 
-button:hover{
+button:hover {
     background-color: rgb(8, 170, 157);
 }
 
+/* Footer */
 #footer {
     background-color: #f6f1e9;
     padding: 20px 40px;
