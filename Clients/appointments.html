@@ -32,7 +32,14 @@
         <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
 
         <label for="doctor">Choose a Doctor :</label>
-        <select name="doctor" id="doctor"></select>
+        <select name="doctor" id="doctor" required>
+            <option value="" disabled selected>Select a doctor</option>
+            <option value="Dr. Smith">Dr. Smith - Cardiologist</option>
+            <option value="Dr. John">Dr. John - Dermatologist</option>
+            <option value="Dr. Alice">Dr. Alice - Neurologist</option>
+        </select>
+
+        <label for="date">Select Appointment Date :</label>
     </form>
 
 </section>
