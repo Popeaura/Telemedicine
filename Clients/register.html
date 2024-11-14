@@ -19,38 +19,46 @@
 
 <!-- Register Form -->
 <section id="register" class="container">
-    <h2>Register</h2>
-    <form class="form-container" action="register.php" method="POST">
-       
-      <label for="firstname">Enter Your First Name:</label>
-      <input type="text" id="firstname" name="firstname" placeholder="First name" required><br><br>
+  <h2>Register</h2>
+  <form class="form-container" action="register.php" method="POST">
+     
+    <div class="form-group">
+        <label for="firstname">Enter Your First Name:</label>
+        <input type="text" id="firstname" name="firstname" placeholder="First name" required>
+    </div>
 
-
-      <label for="lastname">Enter Your Last Name:</label>
-      <input type="text" id="lastname" name="lastname" placeholder="Last name" required><br><br>
-        
+    <div class="form-group">
+        <label for="lastname">Enter Your Last Name:</label>
+        <input type="text" id="lastname" name="lastname" placeholder="Last name" required>
+    </div>
       
-      <label for="age">Enter Your Age:</label>
-      <input type="number" id="age" name="age" placeholder="Age" required><br><br>
+    <div class="form-group">
+        <label for="age">Enter Your Age:</label>
+        <input type="number" id="age" name="age" placeholder="Age" required>
+    </div>
 
-      <label for="email">Enter Your Email:</label>
-      <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+    <div class="form-group">
+        <label for="email">Enter Your Email:</label>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+    </div>
 
-      <label for="tel">Enter Your Phone Number:</label>
-      <input type="tel" id="tel" name="tel" placeholder="Phone number" required><br><br>
+    <div class="form-group">
+        <label for="tel">Enter Your Phone Number:</label>
+        <input type="tel" id="tel" name="tel" placeholder="Phone number" required>
+    </div>
 
-        
-        
+    <div class="form-group">
         <label for="new-username">Username :</label>
         <input type="text" id="new-username" name="username" required placeholder="Username">
-        
+    </div>
 
+    <div class="form-group">
         <label for="password">Enter Your Password:</label>
-        <input type="password" id="password" name="password" placeholder="Password" required><br><br>
-        
+        <input type="password" id="password" name="password" placeholder="Password" required>
+    </div>
       
-        <button type="submit">Register</button>
-    </form>
+    <button type="submit">Register</button>
+  </form>
 </section>
 
 <!-- Footer -->
@@ -98,7 +106,6 @@
       <p>&copy; 2024 MEDIHUB website. All rights reserved.</p>
     </div>
   </footer>
-  <script src="register.js"></script>
-
 </body>
+<script src="register.js"></script>
 </html>
