@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment - Medhub</title>
+    <link rel="stylesheet" href="appointmeent.css">
+</head>
+<body>
+
+<!-- Navigation bar -->
+<nav>
+    <h3>MEDIHUB</h3>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+</nav>
+
+<!-- Appointment form section -->
+<section id="appointment" class="container">
+    <h2>Book an Appointment</h2>
+    <form class="appointment-form" action="book_appointment.php" method="POST">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Your full name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email address" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+
+        <label for="doctor">Choose a Doctor:</label>
+        <select name="doctor" id="doctor" required>
+            <option value="" disabled selected>Select a doctor</option>
+            <option value="Dr. Smith">Dr. Smith - Cardiologist</option>
+            <option value="Dr. John">Dr. John - Dermatologist</option>
+            <option value="Dr. Alice">Dr. Alice - Neurologist</option>
+        </select>
+
+        <label for="date">Select Appointment Date:</label>
+        <input type="date" id="date" required>
+
+        <label for="time">Select Appointment Time:</label>
+        <input type="time" name="time" required>
+
+        <label for="reason">Reason for Appointment:</label>
+        <textarea id="reason" name="reason" placeholder="Describe the reason for your visit" rows="4" required></textarea>
+
+        <button type="submit">Book Appointment</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>MEDIHUB</h3>
+            <p>Unmatched Expertise: Our team of specialists delivers top-tier, personalized care with the latest in medical technology. Patient-Centered Care: We prioritize comfort and clarity, making every patient feel valued and supported throughout.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Our Socials</h4>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/benedict-ahura-96a2712ba/">LinkedIn</a></li>
+                <li><a href="https://x.com/home">Twitter</a></li>
+                <li><a href="https://www.instagram.com/ic3._pop/?next=%2F">Instagram</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p>Email: <a href="mailto:medihub@gmail.com">medihub@gmail.com</a></p>
+            <p>Phone: +254-217-4088</p>
+            <p>Address: 123 Kinker Lane, Nairobi City</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 MEDIHUB website. All rights reserved.</p>
+    </div>
+</footer>
+   <script src="appointment.js"></script> 
+</body>
+</html>
