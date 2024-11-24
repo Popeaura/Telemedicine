@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient's Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #007BFF;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            color: #FF6600;
+        }
+        nav ul li a.active {
+            color: #FF6600;
+            font-weight: bold;
+        }
+        main {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #007BFF;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #FF6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #ff8533;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Patient's Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#profileSection" id="homeLink">Home</a></li>
+                <li><a href="#viewProfileSection" id="profileLink">Profile</a></li>
+                <li><a href="#appointmentsSection" id="appointmentsLink">Appointments</a></li>
+                <li><a href="#consultationsSection" id="consultationsLink">Consultations</a></li>
+                <li><a href="logout.html" id="logoutLink">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="viewProfileSection" class="card">
+            <h2>View Profile</h2>
+            <div id="profileInfo">
+                <!-- Profile details will be populated here -->
+            </div>
+        </div>
+
+        <div id="updateProfileSection" class="card">
+            <h2>Update Profile</h2>
+            <form id="updateProfileForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact Number:</label>
+                    <input type="text" id="contact" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" required>
+                </div>
+                <button type="submit">Update Profile</button>
+            </form>
+        </div>
+
+        <div id="appointmentRequestSection" class="card">
+            <h2>Request Appointment</h2>
+            <form id="appointmentRequestForm">
+                <div class="form-group">
+                    <label for="doctor">Doctor:</label>
+                    <input type="text" id="doctor" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" required>
+                </div>
+                <button type="submit">Request Appointment</button>
+            </form>
+        </div>
+
+        <div id="consultationRequestSection" class="card">
+            <h2>Request Consultation</h2>
+            <form id="consultationRequestForm">
+                <div class="form-group">
+                    <label for="doctor">Doctor:</label>
+                    <input type="text" id="doctorConsultation" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="dateConsultation" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Time:</label>
+                    <input type="time" id="timeConsultation" required>
+                </div>
+                <button type="submit">Request Consultation</button>
+            </form>
+        </div>
+
+        <div id="appointmentsSection" class="card">
+            <h2>View Appointments</h2>
+            <table id="appointmentList">
+                <thead>
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Appointment items will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="consultationsSection" class="card">
+            <h2>View Consultations</h2>
+            <table id="consultationList">
+                <thead>
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Consultation items will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Highlight active nav link based on current section
+            function updateActiveNavLink() {
+                const currentSection = window.location.hash;
+                const navLinks = document.querySelectorAll('nav ul li a');
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+
+            // Update active link on page load
+            updateActiveNavLink();
+
+            // Update active link when hash changes
+            window.addEventListener('hashchange', updateActiveNavLink);
+
+            // Dummy data for profile information (replace with actual data from server)
+            const profileData = {
+                name: 'Jane Doe',
+                email: 'jane.doe@example.com',
+                contact: '+0987654321',
+                address: '123 Maple Street'
+            };
+
+            // Function to populate profile information
+            function populateProfile() {
+                document.getElementById('profileInfo').innerHTML = `
+                    <p><strong>Name:</strong> ${profileData.name}</p>
+                    <p><strong>Email:</strong> ${profileData.email}</p>
+                    <p><strong>Contact Number:</strong> ${profileData.contact}</p>
+                    <p><strong>Address:</strong> ${profileData.address}</p>
+                `;
+            }
+
+            // Function to handle profile update form submission
+            function handleProfileUpdate(event) {
+                event.preventDefault();
+                // Collect form data and update profileData (replace with actual server request)
+                profileData.name = document.getElementById('name').value;
+                profileData.email = document.getElementById('email').value;
+                profileData.contact = document.getElementById('contact').value;
+                profileData.address = document.getElementById('address').value;
+                alert('Profile updated successfully');
+                populateProfile();
+            }
+
+            // Function to handle appointment request form submission
+            function handleAppointmentRequest(event) {
+                event.preventDefault();
+                // Collect form data and add appointment to dummy data (replace with actual server request)
+                const newAppointment = {
+                    id: Date.now(), // Unique ID for the new appointment
+                    doctor: document.getElementById('doctor').value,
+                    date: document.getElementById('date').value,
+                    time: document.getElementById('time').value
+                };
+                appointments.push(newAppointment); // Add to appointments array
+                alert('Appointment requested successfully');
+                populateAppointments();
+            }
+
+            // Function to handle consultation request form submission
+            function handleConsultationRequest(event) {
+                event.preventDefault();
+                // Collect form data and add consultation to dummy data (replace with actual server request)
+                const newConsultation = {
+                    id: Date.now(), // Unique ID for the new consultation
+                    doctor: document.getElementById('doctorConsultation').value,
+                    date: document.getElementById('dateConsultation').value,
+                    time: document.getElementById('timeConsultation').value
+                };
+                consultations.push(newConsultation); // Add to consultations array
+                alert('Consultation requested successfully');
+                populateConsultations();
+            }
+
+            // Event listeners for form submissions
+            document.getElementById('updateProfileForm').addEventListener('submit', handleProfileUpdate);
+            document.getElementById('appointmentRequestForm').addEventListener('submit', handleAppointmentRequest);
+            document.getElementById('consultationRequestForm').addEventListener('submit', handleConsultationRequest);
+
+            // Populate profile on page load
+            populateProfile();
+            
+            // Dummy data for appointments and consultations
+            const appointments = [
+                { id: 1, doctor: 'Dr. John Doe', date: '2024-09-20', time: '10:00 AM' },
+                { id: 2, doctor: 'Dr. Alice Smith', date: '2024-09-21', time: '2:00 PM' }
+            ];
+
+            const consultations = [
+                { id: 1, doctor: 'Dr. Carol White', date: '2024-09-22', time: '11:00 AM' },
+                { id: 2, doctor: 'Dr. Dave Brown', date: '2024-09-23', time: '1:00 PM' }
+            ];
+
+            // Function to populate appointments
+            function populateAppointments() {
+                const appointmentList = document.getElementById('appointmentList').getElementsByTagName('tbody')[0];
+                appointmentList.innerHTML = '';
+                appointments.forEach(appointment => {
+                    const row = appointmentList.insertRow();
+                    row.innerHTML = `
+                        <td>${appointment.doctor}</td>
+                        <td>${appointment.date}</td>
+                        <td>${appointment.time}</td>
+                    `;
+                });
+            }
+
+            // Function to populate consultations
+            function populateConsultations() {
+                const consultationList = document.getElementById('consultationList').getElementsByTagName('tbody')[0];
+                consultationList.innerHTML = '';
+                consultations.forEach(consultation => {
+                    const row = consultationList.insertRow();
+                    row.innerHTML = `
+                        <td>${consultation.doctor}</td>
+                        <td>${consultation.date}</td>
+                        <td>${consultation.time}</td>
+                    `;
+                });
+            }
+
+            // Populate lists on page load
+            populateAppointments();
+            populateConsultations();
+        });
+    </script>
+
+</body>
+</html>
