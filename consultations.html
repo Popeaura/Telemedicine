@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consultations - TeleMed</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background: #007bff;
+        color: white;
+        padding: 15px 0;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+      nav ul li {
+        margin-right: 20px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      nav ul li a.active {
+        color: #ff6600;
+      }
+      nav ul li a:hover {
+        color: #ff6600;
+      }
+      main {
+        padding: 20px;
+        max-width: 1000px;
+        margin: 20px auto;
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      h2 {
+        color: #007bff;
+      }
+      .video-call,
+      .chat,
+      .document-sharing {
+        margin-bottom: 20px;
+      }
+      .video-call video {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+      .chat {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 15px;
+        height: 300px;
+        overflow-y: auto;
+      }
+      .chat input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+      .document-sharing input[type="file"] {
+        display: block;
+        margin-bottom: 10px;
+      }
+      .document-sharing button {
+        padding: 10px 20px;
+        background: #ff6600;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .document-sharing button:hover {
+        background: #ff8533;
+      }
+      .consultation-request {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+      .consultation-request label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      .consultation-request select,
+      .consultation-request button {
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        width: 100%;
+      }
+      .consultation-request button {
+        background: #ff6600;
+        color: white;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .consultation-request button:hover {
+        background: #ff8533;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Consultations - TeleMed</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" id="homeLink">Home</a></li>
+
+          <li>
+            <a href="consultations.html" id="consultationsLink" class="active"
+              >Consultations</a
+            >
+          </li>
+          <li><a href="logout.html" id="logoutLink">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="card consultation-request">
+        <h2>Consultation Request</h2>
+        <form id="consultationForm">
+          <label for="consultationType">Select Consultation Type</label>
+          <select id="consultationType" name="consultationType">
+            <option value="video">Video Call</option>
+            <option value="physical">Physical Meeting</option>
+          </select>
+          <button type="submit">Submit Request</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Video Call Interface</h2>
+        <div class="video-call" id="videoCallSection" style="display: none">
+          <video id="localVideo" autoplay muted></video>
+          <video id="remoteVideo" autoplay></video>
+          <p>Ongoing consultation with patient</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Chat</h2>
+        <div class="chat" id="chatBox">
+          <!-- Chat messages will be dynamically populated here -->
+        </div>
+        <input type="text" id="chatInput" placeholder="Type a message" />
+      </div>
+
+      <div class="card">
+        <h2>Document Sharing</h2>
+        <div class="document-sharing">
+          <input type="file" id="fileUpload" />
+          <button id="uploadButton">Upload Document</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="Consultation.js"></script>
+  </body>
+</html>
