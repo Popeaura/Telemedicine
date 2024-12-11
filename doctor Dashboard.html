@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="logo.svg" alt="ReMedica">
+                <span>ReMedica</span>
+            </div>
+            <nav>
+                <a href="#" class="active">
+                    <i class="icon-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#">
+                    <i class="icon-prescriptions"></i>
+                    <span>Prescriptions</span>
+                </a>
+                <a href="#">
+                    <i class="icon-patients"></i>
+                    <span>Patients</span>
+                </a>
+                <a href="#">
+                    <i class="icon-schedule"></i>
+                    <span>Schedule</span>
+                </a>
+                <a href="#">
+                    <i class="icon-settings"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="logout">
+                    <i class="icon-logout"></i>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header>
+                <h1>Dashboard</h1>
+                <div class="date">Monday, 27 March 2020</div>
+            </header>
+
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h2>Welcome Mary!</h2>
+                    <p>You have 7 patients remaining today</p>
+                    <p class="reminder">Remember to check documentation before call.</p>
+                </div>
+                <img src="stethoscope.svg" alt="Stethoscope" class="welcome-icon">
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="appointments-section">
+                    <h3>Today's Appointments</h3>
+                    <div class="appointments-list">
+                        <div class="appointment">
+                            <img src="avatar1.jpg" alt="Patient" class="patient-avatar">
+                            <div class="appointment-info">
+                                <h4>Augustine Wara</h4>
+                                <p>Consultation</p>
+                            </div>
+                            <div class="appointment-time">8:00</div>
+                        </div>
+                        <!-- More appointments -->
+                        <div class="appointment">
+                            <img src="avatar2.jpg" alt="Patient" class="patient-avatar">
+                            <div class="appointment-info">
+                                <h4>Clementine Baker</h4>
+                                <p>General</p>
+                            </div>
+                            <div class="appointment-time">9:00</div>
+                        </div>
+                        <!-- Add more appointments as needed -->
+                    </div>
+                </div>
+
+                <div class="metrics-section">
+                    <div class="metric-card">
+                        <h3>Revenue</h3>
+                        <div class="metric-values">
+                            <div class="metric">
+                                <span class="value">$3,204</span>
+                                <span class="label">This month</span>
+                            </div>
+                            <div class="metric">
+                                <span class="value">$892</span>
+                                <span class="label">This week</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Analytics</h3>
+                        <div class="chart">
+                            <!-- Chart will be rendered here by JavaScript -->
+                            <canvas id="analyticsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <div class="doctor-profile">
+                <img src="doctor-avatar.jpg" alt="Dr. Mary Gray" class="doctor-avatar">
+                <h3>Dr. Mary Gray</h3>
+                <p>General Medicine</p>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <h4>Overall Rating</h4>
+                    <div class="rating">4.8</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Total Patients</h4>
+                    <div class="total">129</div>
+                </div>
+            </div>
+
+            <div class="alerts">
+                <h3>Alerts</h3>
+                <div class="alert">
+                    <div class="alert-icon new"></div>
+                    <div class="alert-content">
+                        <h4>New appointment</h4>
+                        <p>30 minutes</p>
+                    </div>
+                </div>
+                <div class="alert">
+                    <div class="alert-icon warning"></div>
+                    <div class="alert-content">
+                        <h4>Appointment cancelled</h4>
+                        <p>1 hour</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-card">
+                <img src="doctor-illustration.svg" alt="Doctor" class="promo-image">
+                <h3>Need more?</h3>
+                <button class="upgrade-btn">Upgrade Now</button>
+            </div>
+        </aside>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
