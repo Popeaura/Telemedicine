@@ -3,95 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient's Dashboard</title>
+    <title>Patient Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <nav>
-        <h3>TeleMed Dashboard</h3>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <header id="home">
-        <div class="text">
-            <h1>Welcome to Your Dashboard</h1>
-            <p>Manage your appointments, consultations, and medical records with ease.</p>
-        </div>
-    </header>
-
-    <section id="services" class="service">
-        <div class="service-container">
-            <h3>View Appointments</h3>
-            <img src="appointments-icon.png" alt="Appointments">
-            <p>Check all your upcoming appointments and history.</p>
-            <button>View Now</button>
-        </div>
-        <div class="service-container">
-            <h3>Consultation</h3>
-            <img src="consultation-icon.png" alt="Consultation">
-            <p>Book and manage your consultations online.</p>
-            <button>Manage</button>
-        </div>
-        <div class="service-container">
-            <h3>Medical Records</h3>
-            <img src="records-icon.png" alt="Medical Records">
-            <p>Access and download your medical records.</p>
-            <button>Access</button>
-        </div>
-    </section>
-
-    <section id="stats" class="close">
-        <div class="close-container">
-            <img src="stat-icon1.png" alt="Stat">
-            <h3>15</h3>
-            <p>Total Appointments</p>
-        </div>
-        <div class="close-container">
-            <img src="stat-icon2.png" alt="Stat">
-            <h3>5</h3>
-            <p>Upcoming Consultations</p>
-        </div>
-        <div class="close-container">
-            <img src="stat-icon3.png" alt="Stat">
-            <h3>8</h3>
-            <p>Completed Sessions</p>
-        </div>
-        <div class="close-container">
-            <img src="stat-icon4.png" alt="Stat">
-            <h3>12</h3>
-            <p>Medical Records</p>
-        </div>
-    </section>
-
-    <footer id="footer">
-        <div class="footer-container">
-            <div class="footer-about">
-                <h3>About TeleMed</h3>
-                <p>Your one-stop platform for managing all your healthcare needs.</p>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">+</div>
+            <nav>
+                <a href="#" class="active"><i class="icon-dashboard"></i></a>
+                <a href="#"><i class="icon-patients"></i></a>
+                <a href="#"><i class="icon-schedule"></i></a>
+                <a href="#"><i class="icon-documents"></i></a>
+                <a href="#"><i class="icon-reports"></i></a>
+                <a href="#"><i class="icon-settings"></i></a>
+            </nav>
+            <button class="logout"><i class="icon-logout"></i></button>
+        </aside>
+        <main class="content">
+            <header>
+                <div class="header-left">
+                    <button class="back-button"><i class="icon-chevron-left"></i></button>
+                    <h1>Current Appointment</h1>
+                </div>
+                <div class="header-right">
+                    <button class="notifications"><i class="icon-bell"></i></button>
+                    <div class="avatar">DR</div>
+                </div>
+            </header>
+            <div class="patient-dashboard">
+                <div class="vitals">
+                    <div class="vital-card">
+                        <div class="vital-info">
+                            <p>Heart Rate</p>
+                            <div class="vital-value">80 <span>bpm</span></div>
+                        </div>
+                        <i class="icon-heart"></i>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-info">
+                            <p>Body Temperature</p>
+                            <div class="vital-value">36.5 <span>°C</span></div>
+                        </div>
+                        <i class="icon-thermometer"></i>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-info">
+                            <p>Glucose</p>
+                            <div class="vital-value">100 <span>mg/dl</span></div>
+                        </div>
+                        <i class="icon-droplet"></i>
+                    </div>
+                </div>
+                <div class="patient-info">
+                    <div class="patient-card">
+                        <img src="placeholder.jpg" alt="Roger Curtis" class="patient-avatar">
+                        <h2>Roger Curtis</h2>
+                        <p>Age: 36</p>
+                        <button class="update-button">Update</button>
+                    </div>
+                    <div class="info-card">
+                        <h3>Information</h3>
+                        <dl>
+                            <dt>Gender:</dt>
+                            <dd>Male</dd>
+                            <dt>Blood Type:</dt>
+                            <dd>O+ (Positive)</dd>
+                            <dt>Allergies:</dt>
+                            <dd>Milk, Penicillin</dd>
+                            <dt>Diseases:</dt>
+                            <dd>Diabetes, Blood Disorders</dd>
+                            <dt>Height:</dt>
+                            <dd>176cm</dd>
+                            <dt>Weight:</dt>
+                            <dd>65 kg</dd>
+                            <dt>Patient ID:</dt>
+                            <dd>208809786</dd>
+                            <dt>Last Visit:</dt>
+                            <dd>25th October 2019</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="test-reports">
+                    <h3>Test Reports</h3>
+                    <div class="report">
+                        <i class="icon-file-text"></i>
+                        <div>
+                            <p>CT Scan -Full Body</p>
+                            <p class="date">12th February 2020</p>
+                        </div>
+                    </div>
+                    <div class="report">
+                        <i class="icon-file-text"></i>
+                        <div>
+                            <p>Creatine Kinase T</p>
+                            <p class="date">8th February 2020</p>
+                        </div>
+                    </div>
+                    <div class="report">
+                        <i class="icon-file-text"></i>
+                        <div>
+                            <p>Eye Fluorescein Test</p>
+                            <p class="date">5th February 2020</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="prescriptions">
+                    <h3>Prescriptions</h3>
+                    <button class="add-prescription"><i class="icon-plus"></i></button>
+                    <div class="prescription">
+                        <p>Heart Diseases</p>
+                        <p>25th October 2019</p>
+                        <p>3 months</p>
+                    </div>
+                    <div class="prescription">
+                        <p>Skin Care</p>
+                        <p>8th August 2019</p>
+                        <p>2 months</p>
+                    </div>
+                </div>
             </div>
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <p>Email: support@telemed.com</p>
-                <p>Phone: +123-456-7890</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 TeleMed. All rights reserved.</p>
-        </div>
-    </footer>
+        </main>
+    </div>
+    <script src="dash.js"></script>
 </body>
 </html>
