@@ -109,6 +109,18 @@ header {
     padding: 1rem;
 }
 
+
+.fas.fa-heart {
+        color: red; 
+        font-size: 1.5rem;
+}
+
+
+.fas.fa-thermometer-half {
+        color: #FF8400;
+        font-size: 1.5rem; 
+}
+
 .vitals {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
