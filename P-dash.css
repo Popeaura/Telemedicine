@@ -78,7 +78,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 50px;
+    padding:2px 50px;
 }
 
 .header-left, .header-right {
