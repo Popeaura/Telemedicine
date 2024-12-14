@@ -26,12 +26,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem ;
 }
 
 .logo {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     background-color: #14b8a6;
     color: white;
     display: flex;
@@ -39,13 +39,12 @@ body {
     justify-content: center;
     border-radius: 50%;
     margin-bottom: 2rem;
-    font-size: 1.2rem;
 }
 
 .sidebar nav {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .sidebar a, .logout {
@@ -73,132 +72,214 @@ body {
 .content {
     flex: 1;
     overflow-y: auto;
-    background-color: var(--secondary-color);
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    background-color: var(--card-bg);
-    border-bottom: 1px solid var(--border-color);
+    padding:2px 50px;
 }
 
-.header-left h1 {
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-.header-right {
+.header-left, .header-right {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.notifications {
+.back-button, .notifications {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--muted-color);
+    font-size: 1.25rem;
 }
 
 .avatar {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     background-color: var(--primary-color);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-weight: bold;
 }
 
-.patient-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin: 20px 40px;
-}
-
-.patient-card, .info-card {
-    background-color: var(--card-bg);
-    border-radius: 8px;
+.patient-dashboard {
     padding: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.patient-card {
-    text-align: center;
+
+.fas.fa-heart {
+        color: red; 
+        font-size: 1.5rem;
 }
 
-.patient-avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
+
+.fas.fa-thermometer-half {
+        color: #FF8400;
+        font-size: 1.5rem; 
 }
 
-.update-button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
+.fas.fa-tint {
+    color: #3498db; 
+    font-size: 1.5rem; 
 }
 
 .vitals {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
-    margin: 0 40px 20px;
+    margin-bottom: 1rem;
 }
 
 .vital-card {
     background-color: var(--card-bg);
     border-radius: 8px;
     padding: 1rem;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.vital-card i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.vital-card p {
+.vital-info p {
     margin: 0;
     color: var(--muted-color);
 }
 
-.test-reports, .prescriptions {
-    margin: 20px 40px;
+.vital-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.vital-value span {
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--muted-color);
+}
+
+.patient-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.patient-card, .info-card {
     background-color: var(--card-bg);
-    padding: 1rem;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
 }
 
-.report, .prescription {
+.patient-card {
     display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border-color);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-.report:last-child, .prescription:last-child {
-    border-bottom: none;
+.patient-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
 }
 
-.add-prescription {
+.update-button {
+    margin-top: 1rem;
     background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
+}
+
+.info-card h3, .test-reports h3, .prescriptions h3 {
+    margin-top: 0;
+}
+
+.info-card dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+}
+
+.info-card dt {
+    color: var(--muted-color);
+}
+
+.test-reports, .prescriptions {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.report, .prescription {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.report i, .prescription i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.date {
+    color: var(--muted-color);
+    font-size: 0.875rem;
+}
+
+.prescriptions {
+    position: relative;
+}
+
+.add-prescription {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.prescription {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+    }
+
+    .logo, .logout {
+        display: none;
+    }
+
+    .vitals, .patient-info {
+        grid-template-columns: 1fr;
+    }
+
+    .prescription {
+        grid-template-columns: 1fr;
+    }
 }
