@@ -178,6 +178,11 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     margin-bottom: 1rem;
+    margin-top: 0;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 
@@ -227,7 +232,7 @@ header {
     cursor: pointer;
 }
 
-.info-card h3, .test-reports h3, .prescriptions h3 {
+.info-card h3,  h3, .prescriptions h3 {
     margin-top: 0;
 }
 
@@ -241,7 +246,7 @@ header {
     color: var(--muted-color);
 }
 
-.test-reports, .prescriptions {
+ .prescriptions {
     background-color: var(--card-bg);
     border-radius: 8px;
     padding: 1rem;
