@@ -105,6 +105,13 @@ header {
     border-radius: 50%;
 }
 
+.main-content{
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem; /* Optional: Adds spacing between sections */
+    padding: 1rem;
+}
+
 .patient-dashboard {
     padding: 1rem;
 }
