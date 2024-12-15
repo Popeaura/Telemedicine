@@ -112,10 +112,17 @@ header {
     padding: 1rem;
 }
 
-.patient-dashboard {
+.patient-info {
+    flex: 1; /* Takes equal space on the left */
+    max-width: 350px; /* Limits the width for better control */
     padding: 1rem;
 }
 
+.patient-dashboard {
+    flex: 2; /* Takes more space on the right */
+    padding: 1rem;
+    border-radius: 8px;
+}
 
 .fas.fa-heart {
         color: red; 
