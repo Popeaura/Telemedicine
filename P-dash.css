@@ -147,6 +147,7 @@ header {
     margin-bottom: 1rem;
 }
 
+
 .vital-card {
     background-color: var(--card-bg);
     border-radius: 8px;
@@ -171,6 +172,15 @@ header {
     font-weight: normal;
     color: var(--muted-color);
 }
+
+.test-reports{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+
 
 .patient-info {
   display: flex;
