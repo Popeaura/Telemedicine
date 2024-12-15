@@ -207,6 +207,7 @@ header {
     background-color: var(--card-bg);
     border-radius: 8px;
     padding: 1rem;
+    height: 35vh;
 }
 
 .patient-card {
