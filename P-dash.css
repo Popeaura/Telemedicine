@@ -251,17 +251,17 @@ header {
     display: grid;
     grid-template-columns: auto 1fr; /* Two-column layout */
     gap: 0.5rem 1rem; /* Row and column gaps */
-    margin: 0; /* Remove default margins */
+    margin: 0;
 }
 
 .info-card dt {
-    font-weight: bold; /* Make labels bold */
-    color: var(--muted-color); /* Muted color for labels */
+    font-weight: bold; 
+    color: var(--muted-color);
     text-align: left;
 }
 
 .info-card dd {
-    margin: 0; /* Remove default dd margin */
+    margin: 0;
     color: var(--text-color); /* Regular text color */
     font-weight: normal; /* Normal weight */
 }
