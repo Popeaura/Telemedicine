@@ -240,10 +240,10 @@ header {
 
 .info-card h3 {
     text-align: center;
-    color: var(--primary-color); /* Highlighted color for heading */
-    margin-bottom: 1rem; /* Space below heading */
-    font-size: 1.5rem; /* Larger font for heading */
-    border-bottom: 2px solid var(--primary-color); /* Underline for emphasis */
+    color: var(--primary-color); 
+    margin-bottom: 1rem; 
+    font-size: 1.5rem; 
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 0.5rem;
 }
 
