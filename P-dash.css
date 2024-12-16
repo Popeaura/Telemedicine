@@ -196,20 +196,73 @@ header {
 
 
     
-.test-reports{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
-    margin-top: 0;
-    background-color: var(--card-bg);
-    border-radius: 8px;
-    padding: 1rem;
-    height:15vh;
-
+.test-reports {
+    background-color: var(--card-bg); /* Card background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 1.5rem; /* Increased padding for breathing space */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    max-width: 600px; /* Limit maximum width for better readability */
+    margin: 1rem auto; /* Center the section */
+    font-family: Arial, sans-serif; /* Clean font */
+    color: var(--text-color); /* General text color */
 }
 
+.test-reports h3 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem; /* Space below the title */
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
 
+.report {
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+    gap: 1rem; /* Space between icon and text */
+    background: #f9f9f9; /* Light gray background for contrast */
+    border-radius: 6px; /* Slightly rounded corners */
+    padding: 0.8rem 1rem; /* Inner spacing */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for each report */
+    margin-bottom: 1rem; /* Space between each report */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.report:hover {
+    transform: translateY(-5px); /* Lift card slightly on hover */
+}
+
+.report i {
+    font-size: 1.8rem; /* Larger icon size */
+    color: var(--primary-color); /* Use primary color for icons */
+}
+
+.report p {
+    margin: 0; /* Remove default margin */
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.report .date {
+    color: var(--muted-color); /* Muted color for date */
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+}
+
+@media (max-width: 768px) {
+    .test-reports {
+        padding: 1rem; /* Adjust padding on smaller screens */
+    }
+
+    .report {
+        flex-direction: column; /* Stack content vertically */
+        align-items: flex-start;
+    }
+
+    .report i {
+        font-size: 1.5rem; /* Slightly smaller icon for smaller screens */
+    }
+}
 
 .patient-info {
   display: flex;

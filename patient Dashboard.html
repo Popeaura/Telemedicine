@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Dashboard</title>
     <link rel="stylesheet" href="P-dash.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
 </head>
+
 <body>
     <div class="dashboard">
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">+</div>
             <nav>
@@ -20,21 +22,22 @@
                 <a href="#"><i class="fas fa-chart-bar"></i></a>
                 <a href="#"><i class="fas fa-cog"></i></a>
             </nav>
-            
-            
             <button class="logout">
                 <i class="fas fa-sign-out-alt"></i>
             </button>
-
         </aside>
+
+        <!-- Main Content -->
         <main class="content">
+            <!-- Back Button -->
             <p style="padding: 20px 50px;">
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
             </p>
 
+            <!-- Header -->
             <header>
                 <div class="header-left">
-                  <h1>Current Appointment</h1>
+                    <h1>Current Appointment</h1>
                 </div>
                 <div class="header-right">
                     <button class="notifications">
@@ -43,110 +46,121 @@
                     <div class="avatar">DR</div>
                 </div>
             </header>
-            <main class="content">
-                <div class="main-content">
-                    <!-- Patient Information -->
-                    <div class="patient-info">
-                        <div class="patient-card">
-                            <img src="Assets/black boy inspired by the boondocks.jpeg" alt="Roger Curtis" class="patient-avatar">
-                            <h2>Roger Curtis</h2>
-                            <p>Age: 36</p>
-                            <button class="update-button">Update</button>
-                        </div><br><br>
-                        <div class="info-card">
-                            <h3>Information</h3>
-                            <dl>
-                                <dt>Gender:</dt>
-                                <dd>Male</dd>
-                                <dt>Blood Type:</dt>
-                                <dd>O+ (Positive)</dd>
-                                <dt>Allergies:</dt>
-                                <dd>Milk, Penicillin</dd>
-                                <dt>Diseases:</dt>
-                                <dd>Diabetes, Blood Disorders</dd>
-                                <dt>Height:</dt>
-                                <dd>176cm</dd>
-                                <dt>Weight:</dt>
-                                <dd>65 kg</dd>
-                                <dt>Patient ID:</dt>
-                                <dd>208809786</dd>
-                                <dt>Last Visit:</dt>
-                                <dd>25th October 2019</dd>
-                            </dl>
+
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <!-- Patient Information -->
+                <div class="patient-info">
+                    <div class="patient-card">
+                        <img src="Assets/black boy inspired by the boondocks.jpeg" alt="Roger Curtis" class="patient-avatar">
+                        <h2>Roger Curtis</h2>
+                        <p>Age: 36</p>
+                        <button class="update-button">Update</button>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Information</h3>
+                        <dl>
+                            <dt>Gender:</dt>
+                            <dd>Male</dd>
+                            <dt>Blood Type:</dt>
+                            <dd>O+ (Positive)</dd>
+                            <dt>Allergies:</dt>
+                            <dd>Milk, Penicillin</dd>
+                            <dt>Diseases:</dt>
+                            <dd>Diabetes, Blood Disorders</dd>
+                            <dt>Height:</dt>
+                            <dd>176cm</dd>
+                            <dt>Weight:</dt>
+                            <dd>65 kg</dd>
+                            <dt>Patient ID:</dt>
+                            <dd>208809786</dd>
+                            <dt>Last Visit:</dt>
+                            <dd>25th October 2019</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <!-- Patient Dashboard -->
+                <div class="patient-dashboard">
+                    <!-- Vitals -->
+                    <div class="vitals">
+                        <div class="vital-card">
+                            <div class="vital-info">
+                                <i class="fas fa-heart"></i>
+                                <p>Heart Rate</p>
+                                <div class="vital-value">80 <span>bpm</span></div>
+                            </div>
+                        </div>
+                        <div class="vital-card">
+                            <div class="vital-info">
+                                <i class="fas fa-thermometer-half"></i>
+                                <p>Body Temperature</p>
+                                <div class="vital-value">36.5 <span>°C</span></div>
+                            </div>
+                        </div>
+                        <div class="vital-card">
+                            <div class="vital-info">
+                                <i class="fas fa-tint"></i>
+                                <p>Glucose</p>
+                                <div class="vital-value">100 <span>mg/dl</span></div>
+                            </div>
                         </div>
                     </div>
-            
-                    <!-- Patient Dashboard -->
-                    <div class="patient-dashboard">
-                        <div class="vitals">
-                            <div class="vital-card">
-                                <div class="vital-info">
-                                    <i class="fas fa-heart"></i><br><br>
-                                    <p>Heart Rate</p><br>
-                                    <div class="vital-value">80 <span>bpm</span></div>
-                                </div>
-                            </div>
-                            <div class="vital-card">
-                                <div class="vital-info">
-                                    <i class="fas fa-thermometer-half"></i><br><br>
-                                    <p>Body Temperature</p><br>
-                                    <div class="vital-value">36.5 <span>°C</span></div>
-                                </div>
-                            </div>
-                            <div class="vital-card">
-                                <div class="vital-info">
-                                    <i class="fas fa-tint"></i><br><br>
-                                    <p>Glucose</p><br>
-                                    <div class="vital-value">100 <span>mg/dl</span></div>
-                                </div>
+
+                    <!-- Test Reports -->
+                    <div class="test-reports">
+                        <h3>Test Reports</h3>
+                        <div class="report">
+                            <i class="icon-file-text"></i>
+                            <div>
+                                <p>CT Scan - Full Body</p>
+                                <p class="date">12th February 2020</p>
                             </div>
                         </div>
-            
-                        <!-- Test Reports -->
-                        <div class="test-reports">
-                            <h3>Test Reports</h3>
-                            <div class="report">
-                                <i class="icon-file-text"></i>
-                                <div>
-                                    <p>CT Scan - Full Body</p>
-                                    <p class="date">12th February 2020</p>
-                                </div>
-                            </div>
-                            <div class="report">
-                                <i class="icon-file-text"></i>
-                                <div>
-                                    <p>Creatine Kinase T</p>
-                                    <p class="date">8th February 2020</p>
-                                </div>
-                            </div>
-                            <div class="report">
-                                <i class="icon-file-text"></i>
-                                <div>
-                                    <p>Eye Fluorescein Test</p>
-                                    <p class="date">5th February 2020</p>
-                                </div>
+                        <div class="report">
+                            <i class="icon-file-text"></i>
+                            <div>
+                                <p>Creatine Kinase T</p>
+                                <p class="date">8th February 2020</p>
                             </div>
                         </div>
-            
-                        <!-- Prescriptions -->
-                        <div class="prescriptions">
-                            <h3>Prescriptions</h3>
-                            <button class="add-prescription"><i class="icon-plus"></i></button>
-                            <div class="prescription">
-                                <p>Heart Diseases</p>
-                                <p>25th October 2019</p>
-                                <p>3 months</p>
+                        <div class="report">
+                            <i class="icon-file-text"></i>
+                            <div>
+                                <p>Eye Fluorescein Test</p>
+                                <p class="date">5th February 2020</p>
                             </div>
-                            <div class="prescription">
-                                <p>Skin Care</p>
-                                <p>8th August 2019</p>
-                                <p>2 months</p>
+                        </div>
+                    </div>
+
+                    <!-- Prescriptions -->
+                    <div class="prescriptions">
+                        <h3>Prescriptions</h3>
+                        <button class="add-prescription">
+                            <i class="icon-plus"></i>
+                        </button>
+                        <div class="prescription">
+                            <div class="prescription-info">
+                                <p class="title">Heart Diseases</p>
+                                <p class="date">25th October 2019</p>
+                                <p class="duration">3 months</p>
+                            </div>
+                        </div>
+                        <div class="prescription">
+                            <div class="prescription-info">
+                                <p class="title">Skin Care</p>
+                                <p class="date">8th August 2019</p>
+                                <p class="duration">2 months</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
+    </div>
+
     <script src="dash.js"></script>
 </body>
+
 </html>
