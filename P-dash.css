@@ -229,13 +229,13 @@ header {
 .info-card {
     background-color: var(--card-bg);
     border-radius: 8px; 
-    padding: 1.5rem; /* Add comfortable padding */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    font-family: Arial, sans-serif; /* Modern and clean font */
-    color: var(--text-color); /* Custom text color variable */
-    max-width: 400px; /* Set a max width for readability */
-    margin: 1rem auto; /* Center the card */
-    line-height: 1.6; /* Better line spacing */
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    font-family: Arial, sans-serif; 
+    color: var(--text-color); 
+    max-width: 400px; 
+    margin: 1rem auto; 
+    line-height: 1.6; 
 }
 
 .info-card h3 {
