@@ -262,8 +262,8 @@ header {
 
 .info-card dd {
     margin: 0;
-    color: var(--text-color); /* Regular text color */
-    font-weight: normal; /* Normal weight */
+    color: var(--text-color); 
+    font-weight: normal; 
 }
 
 .patient-card {
