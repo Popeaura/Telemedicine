@@ -239,7 +239,7 @@ header {
 }
 
 .info-card h3 {
-    text-align: center; /* Center the heading */
+    text-align: center;
     color: var(--primary-color); /* Highlighted color for heading */
     margin-bottom: 1rem; /* Space below heading */
     font-size: 1.5rem; /* Larger font for heading */
