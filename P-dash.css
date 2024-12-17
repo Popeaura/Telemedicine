@@ -284,13 +284,19 @@ header {
 }
 
 .update-button {
-    margin-top: 1rem;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
+
+        background-color:#fff;
+        color: black;
+        padding: 10px 20px;
+        border: 2px solid rgb(67, 241, 227);;
+        border-radius: 8px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s; 
+}
+    
+button:hover{
+        background-color: rgb(8, 170, 157);
 }
 
 .info-card h3,  h3, .prescriptions h3 {
