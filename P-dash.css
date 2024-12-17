@@ -312,52 +312,60 @@ button:hover{
 .info-card dt {
     color: var(--muted-color);
 }
-
- .prescriptions {
+.prescriptions {
     background-color: var(--card-bg);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height:300px;
 }
 
-.report, .prescription {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
+.prescriptions h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
-.report i, .prescription i {
-    font-size: 1.5rem;
+.add-prescription {
+    background: none;
+    border: none;
+    font-size: 1rem;
     color: var(--primary-color);
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
 }
 
-.date {
+.prescription-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.prescription-table th,
+.prescription-table td {
+    padding: 0.5rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.prescription-table th {
+    font-weight: bold;
+    color: #666;
+}
+
+.prescription-table .title {
+    font-weight: bold;
+    color: #333;
+}
+
+.prescription-table .date,
+.prescription-table .duration {
     color: var(--muted-color);
     font-size: 0.875rem;
 }
 
-.prescriptions {
-    position: relative;
-    height: 35vh;
-}
-
-.add-prescription {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
-.prescription {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-}
 
 
 @media (max-width: 768px) {
