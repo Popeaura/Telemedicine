@@ -70,20 +70,14 @@ body {
 }
 .back-button {
     text-decoration: none;
-    color: var(--text-color); /* Replace with your desired color */
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    color: var(--text-color); 
     font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .back-button:hover {
     color: #5bc0b8;
-}; /* Replace with hover color */
+}; 
 
 
 
