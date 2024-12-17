@@ -22,7 +22,7 @@ body {
 
 .sidebar {
     width: 64px;
-    background-color: rgb(67, 241, 227);
+    background-color: rgb(39, 109, 103);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,7 +59,7 @@ body {
 }
 
 .sidebar a.active, .sidebar a:hover, .logout:hover {
-    background-color: #0f766e;
+    background-color: #14ada1;
 }
 
 .logout {
@@ -97,7 +97,7 @@ header {
 .avatar {
     width: 32px;
     height: 32px;
-    background-color: rgb(67, 241, 227);
+    background-color: rgb(1, 238, 218);
     color: white;
     display: flex;
     align-items: center;
