@@ -206,8 +206,64 @@ header {
     border-radius: 8px;
     padding: 1rem;
     height:15vh;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 
 }
+
+.test-reports h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+/* Individual Report Card */
+.report {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #fff;
+    padding: 0.8rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Icon Background Colors */
+.blue-bg {
+    background-color: #3498db;
+}
+
+.yellow-bg {
+    background-color: #f1c40f;
+}
+
+.red-bg {
+    background-color: #e74c3c;
+}
+
+.report-details .title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.report-details .date {
+    font-size: 0.875rem;
+    color: #888;
+    margin: 0;
+}
+
 
 
 
