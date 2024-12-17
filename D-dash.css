@@ -64,18 +64,13 @@ body {
 }
 
 .sidebar a.active {
-    text-decoration: none;
-    color: var(--text-color); /* Replace with your desired color */
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--primary-color);
+    color: white;
 }
 
-.sidebar a:hover:not(.active){
-    color:  #8aeee6; 
+.sidebar a:hover:not(.active) {
+    background-color: var(--secondary-color);
 }
-
-
 
 .logout {
     margin-top: auto;
