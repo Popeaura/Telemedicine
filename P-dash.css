@@ -148,7 +148,7 @@ header {
 }
 
 .vital-card {
-    background-color:#f6f1e9;
+    background-color:rgb(1, 238, 218);
     border-radius: 15px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     padding: 1.5rem;
