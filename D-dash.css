@@ -29,7 +29,7 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-    background-color: var(--card-bg);
+    background-color: rgb(59, 70, 68);
     padding: 1.5rem;
     border-right: 1px solid var(--border-color);
 }
