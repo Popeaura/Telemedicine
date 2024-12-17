@@ -22,7 +22,7 @@ body {
 
 .sidebar {
     width: 64px;
-    background-color: rgb(39, 109, 103);
+    background-color: rgb(35, 37, 37);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@ body {
 .logo {
     width: 32px;
     height: 32px;
-    background-color: #14b8a6;
+    background-color: #222726;
     color: white;
     display: flex;
     align-items: center;
@@ -97,7 +97,7 @@ header {
 .avatar {
     width: 32px;
     height: 32px;
-    background-color: rgb(1, 238, 218);
+    background-color: rgb(59, 70, 68);
     color: white;
     display: flex;
     align-items: center;
