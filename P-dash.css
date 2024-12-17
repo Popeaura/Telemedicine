@@ -237,6 +237,8 @@ header {
     max-width: 400px; 
     margin: 1rem auto; 
     line-height: 1.6; 
+    min-height: 400px;
+
 }
 
 .info-card h3 {
