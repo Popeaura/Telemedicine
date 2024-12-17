@@ -82,8 +82,9 @@ body {
 }
 
 .back-button:hover {
-    color: #fff; /* Replace with hover color */
-}
+    color: #5bc0b8;
+}; /* Replace with hover color */
+
 
 
 .content {
