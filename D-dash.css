@@ -5,10 +5,12 @@
     --muted-color: #6b7280;
     --border-color: #e5e7eb;
     --card-bg: #ffffff;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: var(--text-color);
@@ -39,6 +41,8 @@ body {
     justify-content: center;
     border-radius: 50%;
     margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .sidebar nav {
@@ -56,6 +60,7 @@ body {
     color: white;
     text-decoration: none;
     border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
 .sidebar a.active, .sidebar a:hover, .logout:hover {
@@ -71,7 +76,8 @@ body {
 
 /* Main Content Styles */
 .content {
-    padding: 10rem;
+    flex-grow: 1;
+    padding: 2rem;
     overflow-y: auto;
 }
 
@@ -82,6 +88,11 @@ header {
     margin-bottom: 2rem;
 }
 
+header h1 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
 .welcome-section {
     background-color: var(--card-bg);
     border-radius: 1rem;
@@ -90,15 +101,13 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .welcome-icon {
-    font-size: 40px; 
-    color: #4F200D; 
-    vertical-align: middle; 
-    margin-left: 10px; 
+    font-size: 48px; 
+    color: var(--primary-color);
 }
-
 
 .dashboard-grid {
     display: grid;
@@ -111,6 +120,7 @@ header {
     background-color: var(--card-bg);
     border-radius: 1rem;
     padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .appointment {
@@ -125,19 +135,22 @@ header {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .appointment-time {
     margin-left: auto;
     color: var(--success-color);
+    font-weight: 500;
 }
 
 /* Metrics Styles */
-.metric-card {
+.metric-card, .analytics-card {
     background-color: var(--card-bg);
     border-radius: 1rem;
     padding: 1.5rem;
     margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .metric-values {
@@ -149,6 +162,7 @@ header {
 .metric .value {
     font-size: 1.5rem;
     font-weight: bold;
+    color: var(--primary-color);
 }
 
 .metric .label {
@@ -156,14 +170,9 @@ header {
     font-size: 0.875rem;
 }
 
-.analytics-card {
-    background-color: var(--card-bg);
-    border-radius: 1rem;
-    padding: 1.5rem;
-}
-
 /* Right Sidebar Styles */
 .right-sidebar {
+    width: 300px;
     background-color: var(--card-bg);
     padding: 1.5rem;
     border-left: 1px solid var(--border-color);
@@ -179,6 +188,7 @@ header {
     height: 80px;
     border-radius: 50%;
     margin-bottom: 1rem;
+    object-fit: cover;
 }
 
 .stats {
@@ -229,8 +239,8 @@ header {
     text-align: center;
 }
 
-.promo-image {
-    width: 150px;
+.promo-icon {
+    font-size: 48px;
     margin-bottom: 1rem;
 }
 
@@ -251,21 +261,33 @@ header {
 
 @media (max-width: 1200px) {
     .dashboard {
-        grid-template-columns: 240px 1fr;
+        flex-direction: column;
     }
     .right-sidebar {
-        display: none;
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
     }
 }
 
 @media (max-width: 768px) {
-    .dashboard {
-        grid-template-columns: 1fr;
-    }
-    .sidebar {
-        display: none;
-    }
     .dashboard-grid {
         grid-template-columns: 1fr;
     }
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem;
+    }
+    .sidebar nav {
+        flex-direction: row;
+    }
+    .logo {
+        margin-bottom: 0;
+    }
+    .logout {
+        margin-top: 0;
+    }
 }
+
