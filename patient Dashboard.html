@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Dashboard</title>
-    <link rel="stylesheet" href="P-dash.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <div class="dashboard">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">+</div>
             <nav>
-                <a href="#" class="active"><i class="fas fa-tachometer-alt"></i></a>
-                <a href="#"><i class="fas fa-user-injured"></i></a>
-                <a href="#"><i class="fas fa-calendar-alt"></i></a>
-                <a href="#"><i class="fas fa-file-alt"></i></a>
-                <a href="#"><i class="fas fa-chart-bar"></i></a>
-                <a href="#"><i class="fas fa-cog"></i></a>
+                <a href="#" class="active"><i class="material-icons">dashboard</i></a>
+                <a href="#"><i class="material-icons">person</i></a>
+                <a href="#"><i class="material-icons">event</i></a>
+                <a href="#"><i class="material-icons">description</i></a>
+                <a href="#"><i class="material-icons">bar_chart</i></a>
+                <a href="#"><i class="material-icons">settings</i></a>
             </nav>
             <button class="logout">
-                <i class="fas fa-sign-out-alt"></i>
+                <i class="material-icons">exit_to_app</i>
             </button>
         </aside>
 
         <!-- Main Content -->
         <main class="content">
             <!-- Back Button -->
-            <p style="padding: 20px 50px;">
+            <p class="back-button-container">
                 <a href="index.html" class="back-button">
-                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    <i class="material-icons">arrow_back</i> Back to Dashboard
                 </a>
             </p>
 
@@ -43,7 +42,7 @@
                 </div>
                 <div class="header-right">
                     <button class="notifications">
-                        <i class="fas fa-bell"></i>
+                        <i class="material-icons">notifications</i>
                     </button>
                     <div class="avatar">DR</div>
                 </div>
@@ -54,7 +53,7 @@
                 <!-- Patient Information -->
                 <div class="patient-info">
                     <div class="patient-card">
-                        <img src="Assets/black boy inspired by the boondocks.jpeg" alt="Roger Curtis" class="patient-avatar">
+                        <img src="https://i.pravatar.cc/150?img=4" alt="Roger Curtis" class="patient-avatar">
                         <h2>Roger Curtis</h2>
                         <p>Age: 36</p>
                         <button class="update-button">Update</button>
@@ -89,21 +88,21 @@
                     <div class="vitals">
                         <div class="vital-card">
                             <div class="vital-info">
-                                <i class="fas fa-heart"></i>
+                                <i class="material-icons">favorite</i>
                                 <p>Heart Rate</p>
                                 <div class="vital-value">80 <span>bpm</span></div>
                             </div>
                         </div>
                         <div class="vital-card">
                             <div class="vital-info">
-                                <i class="fas fa-thermometer-half"></i>
+                                <i class="material-icons">thermostat</i>
                                 <p>Body Temperature</p>
                                 <div class="vital-value">36.5 <span>°C</span></div>
                             </div>
                         </div>
                         <div class="vital-card">
                             <div class="vital-info">
-                                <i class="fas fa-tint"></i>
+                                <i class="material-icons">opacity</i>
                                 <p>Glucose</p>
                                 <div class="vital-value">100 <span>mg/dl</span></div>
                             </div>
@@ -115,7 +114,7 @@
                         <h3>Test Reports</h3>
                         <div class="report">
                             <div class="icon-container blue-bg">
-                                <i class="fas fa-file-medical"></i>
+                                <i class="material-icons">description</i>
                             </div>
                             <div class="report-details">
                                 <p class="title">CT Scan - Full Body</p>
@@ -124,19 +123,19 @@
                         </div>
                         <div class="report">
                             <div class="icon-container yellow-bg">
-                                <i class="fas fa-vial"></i>
+                                <i class="material-icons">science</i>
                             </div>
                             <div class="report-details">
                                 <p class="title">Creatine Kinase T</p>
                                 <p class="date">8th February 2020</p>
                             </div>
-                         </div>
+                        </div>
                         <div class="report">
                             <div class="icon-container red-bg">
-                                <i class="fas fa-eye"></i>
+                                <i class="material-icons">visibility</i>
                             </div>
                             <div class="report-details">
-                                 <p class="title">Eye Fluorescein Test</p>
+                                <p class="title">Eye Fluorescein Test</p>
                                 <p class="date">5th February 2020</p>
                             </div>
                         </div>
@@ -144,9 +143,9 @@
 
                     <!-- Prescriptions -->
                     <div class="prescriptions">
-                         <h3>Prescriptions</h3>
-                         <button class="add-prescription">
-                            + Add a prescription
+                        <h3>Prescriptions</h3>
+                        <button class="add-prescription">
+                            <i class="material-icons">add</i> Add a prescription
                         </button>
                         <table class="prescription-table">
                             <thead>
@@ -156,7 +155,7 @@
                                     <th>Duration</th>
                                 </tr>
                             </thead>
-                        <tbody>
+                            <tbody>
                                 <tr>
                                     <td class="title">Heart Diseases</td>
                                     <td class="date">25th October 2019</td>
@@ -175,7 +174,6 @@
         </main>
     </div>
 
-    <script src="dash.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
