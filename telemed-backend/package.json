@@ -1,0 +1,21 @@
+{
+  "name": "telemedicine",
+  "version": "1.0.0",
+  "description": "This project is a comprehensive Telemedicine Platform that includes features such as user authentication, patient management, doctor scheduling, appointment booking, and data security. The goal is to make healthcare accessible remotely by connecting patients and doctors seamlessly.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Popeaura/Telemedicine.git"
+  },
+  "keywords": ["telemedicine", "healthcare", "remote-health"],
+  "author": "Pope Lumar Maksym",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Popeaura/Telemedicine/issues"
+  },
+  "homepage": "https://github.com/Popeaura/Telemedicine#readme"
+}
