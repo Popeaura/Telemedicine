@@ -293,21 +293,22 @@ header {
 }
 
 .add-prescription {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 1rem;
-    transition: background-color 0.3s ease;
+    background-color:#fff;
+    color: black;
+    padding: 10px 20px;
+    border: 2px solid rgb(67, 241, 227);;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .add-prescription:hover {
-    background-color: #0b7c72;
+    background-color: rgb(8, 170, 157);
 }
 
 .prescription-table {
