@@ -147,8 +147,43 @@ header {
 }
 
 .info-card{
-    min-height: 600px
+    background-color: var(--card-bg);
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
 }
+
+.info-card h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info-card dl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.info-card dl div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 45%; /* Adjust based on your layout needs */
+}
+
+.info-card dt {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.info-card dd {
+    margin: 0;
+}
+
 
 .patient-info {
     display: flex;
@@ -156,7 +191,7 @@ header {
     gap: 1rem;
 }
 
-.patient-card, .info-card {
+.patient-card{
     background-color: var(--card-bg);
     border-radius: 8px;
     padding: 1.5rem;
