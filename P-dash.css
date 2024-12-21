@@ -190,7 +190,7 @@ header {
 .info-card dl {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 0.5rem 1rem;
+    gap: 3rem 1rem;
 }
 
 .info-card dt {
