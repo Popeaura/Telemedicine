@@ -146,6 +146,10 @@ header {
     gap: 2rem;
 }
 
+.info-card{
+    min-height: 600px
+}
+
 .patient-info {
     display: flex;
     flex-direction: column;
