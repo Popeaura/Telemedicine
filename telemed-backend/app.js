@@ -1,8 +1,17 @@
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 const bcrypt = require('bcrypt'); // Import bcrypt
+const express = require('express');
+const app = express();
 dotenv.config();
 
+
+const path = require('path');
+
+// Serve static files (like HTML, CSS, JS) from the 'telemed' directory
+app.use(express.static(path.join(__dirname, '../telemed')));
+
+// MySQL connection setup
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -18,22 +27,16 @@ db.connect((err) => {
   console.log('Connected to the MySQL database!');
 });
 
-const express = require('express');
-const app = express();
+// Middleware to parse incoming form data
+app.use(express.urlencoded({ extended: true }));  // For form data (urlencoded)
+app.use(express.json());  // For JSON data
 
-app.use(express.json());
+// Handle the form submission
+app.post('/register', (req, res) => {
+  const { firstname, lastname, age, email, tel, username, password } = req.body;
 
-// Add this section to define the /add-user route
-app.post('/add-user', (req, res) => {
-  const { username, password, role } = req.body;
-
-  if (!username || !password || !role) {
-    return res.status(400).send('Username, password, and role are required!');
-  }
-
-  const validRoles = ['admin', 'doctor', 'patient'];
-  if (!validRoles.includes(role)) {
-    return res.status(400).send('Invalid role! Role must be one of: admin, doctor, patient.');
+  if (!firstname || !lastname || !age || !email || !tel || !username || !password) {
+    return res.status(400).send('All fields are required!');
   }
 
   // Hash the password before saving it to the database
@@ -43,8 +46,10 @@ app.post('/add-user', (req, res) => {
       return res.status(500).send('Failed to hash password.');
     }
 
-    const query = 'INSERT INTO users (username, password, role) VALUES (?, ?, ?)';
-    db.query(query, [username, hashedPassword, role], (err, result) => {
+    // SQL query to insert form data into the database
+    const query = `INSERT INTO users (firstname, lastname, age, email, tel, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+
+    db.query(query, [firstname, lastname, age, email, tel, username, hashedPassword], (err, result) => {
       if (err) {
         console.error('Error inserting user:', err.message);
         return res.status(500).send('Failed to add user.');
@@ -56,44 +61,14 @@ app.post('/add-user', (req, res) => {
   });
 });
 
-// Add this section to define the /login route
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-
-  if (!username || !password) {
-    return res.status(400).send('Username and password are required!');
-  }
-
-  const query = 'SELECT * FROM users WHERE username = ?';
-  db.query(query, [username], (err, result) => {
-    if (err) {
-      console.error('Error fetching user:', err.message);
-      return res.status(500).send('Login failed.');
-    }
-
-    if (result.length > 0) {
-      bcrypt.compare(password, result[0].password, (err, isMatch) => {
-        if (err) {
-          console.error('Error comparing password:', err.message);
-          return res.status(500).send('Login failed.');
-        }
-
-        if (isMatch) {
-          res.status(200).send('Login successful!');
-          console.log('User logged in successfully.');
-        } else {
-          res.status(400).send('Incorrect password!');
-        }
-      });
-    } else {
-      res.status(404).send('User not found.');
-    }
-  });
+// Serve the index.html page
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');  // Assuming index.html is in the root directory
 });
 
 // Other routes and server start
-app.get('/', (req, res) => {
-  res.send('Telemedicine Backend is up and running!');
+app.get('/login', (req, res) => {
+  res.send('Login route');
 });
 
 const PORT = process.env.PORT || 3000;
