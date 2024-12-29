@@ -1,7 +1,7 @@
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 const bcrypt = require('bcrypt');
-const path = require('path');  // Add path module
+const path = require('path');
 dotenv.config();
 
 const db = mysql.createConnection({
@@ -22,8 +22,14 @@ db.connect((err) => {
 const express = require('express');
 const app = express();
 
-// Serve static files from the 'telemed' folder
-app.use(express.static(path.join(__dirname, '../telemed')));
+// Serve static files from the root of the 'Telemedicine' folder
+app.use(express.static(path.join(__dirname, '../')));
+
+// Route for register.html
+app.get('/register.html', (req, res) => {
+  console.log('Serving register.html');
+  res.sendFile(path.join(__dirname, '../register.html'));
+});
 
 app.use(express.json());
 
@@ -91,6 +97,7 @@ app.post('/login', (req, res) => {
   });
 });
 
+// Default route to check if the server is up and running
 app.get('/', (req, res) => {
   res.send('Telemedicine Backend is up and running!');
 });
