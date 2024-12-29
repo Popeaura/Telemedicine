@@ -38,25 +38,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Validate Phone Number
         const phone = document.getElementById('tel');
-        const phonePattern = /^[0-9]{10}$/;
+        const phonePattern = /^[+0-9]{1,3}?[-.\s]?[0-9]{1,4}?[-.\s]?[0-9]{1,4}?[-.\s]?[0-9]{1,9}$/;
         if (!phonePattern.test(phone.value.trim())) {
             showError(phone, 'Phone number must be 10 digits');
             isValid = false;
         }
 
         // Validate Username
-        const username = document.getElementById('new-username');
-        if (username.value.trim().length < 4) {
-            showError(username, 'Username must be at least 4 characters');
+        const usernamePattern = /^[a-zA-Z0-9_]+$/; // Only alphanumeric characters and underscores
+        if (!usernamePattern.test(username.value.trim())) {
+            showError(username, 'Username can only contain letters, numbers, and underscores');
             isValid = false;
         }
-
+        
         // Validate Password
-        const password = document.getElementById('password');
-        if (password.value.length < 8) {
-            showError(password, 'Password must be at least 8 characters');
+        const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+        if (!passwordPattern.test(password.value)) {
+            showError(password, 'Password must be at least 8 characters long, include at least one uppercase letter, one number, and one special character');
             isValid = false;
         }
+        
 
         // Prevent form submission if there are validation errors
         if (!isValid) {

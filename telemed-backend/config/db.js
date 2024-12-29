@@ -1,19 +1,23 @@
 const mysql = require('mysql2');
-require('dotenv').config(); // Load environment variables
+const dotenv = require('dotenv');
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'telemed_db',
+dotenv.config();  // Load environment variables
+
+// Create the database connection
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
-connection.connect(err => {
+// Connect to the database
+db.connect((err) => {
   if (err) {
     console.error('Database connection failed:', err.message);
-  } else {
-    console.log('Connected to the MySQL database!');
+    throw err;
   }
+  console.log('Connected to the MySQL database!');
 });
 
-module.exports = connection;
+module.exports = db;

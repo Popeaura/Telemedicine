@@ -32,6 +32,11 @@ nav a:hover {
 }
 
 /* Register Form Section */
+.form-container input:focus {
+    border-color: rgb(8, 170, 157);
+}
+
+
 .container {
     max-width: 400px;
     margin: 50px auto;
@@ -82,6 +87,15 @@ nav a:hover {
 button:hover {
     background-color: rgb(8, 170, 157);
 }
+
+.form-container button {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form-container button:hover {
+    transform: scale(1.05);
+}
+
 
 
 /* Footer Styling */
@@ -160,3 +174,10 @@ button:hover {
         font-size: 18px;
     }
 }
+@media (max-width: 480px) {
+    .container {
+        max-width: 90%;
+        padding: 15px;
+    }
+  }
+  
