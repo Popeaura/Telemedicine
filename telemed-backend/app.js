@@ -9,6 +9,18 @@ app.get('/', (req, res) => {
   res.send('Telemedicine Backend is up and running!');
 });
 
+// Test database connection
+app.get('/test-db', (req, res) => {
+  db.query('SELECT 1 + 1 AS solution', (err, results) => {
+    if (err) {
+      res.status(500).send('Database connection failed!');
+    } else {
+      res.send(`Database is working! The solution is: ${results[0].solution}`);
+    }
+  });
+});
+
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
