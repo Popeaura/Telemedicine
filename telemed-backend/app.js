@@ -1,17 +1,9 @@
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
-const bcrypt = require('bcrypt'); // Import bcrypt
-const express = require('express');
-const app = express();
+const bcrypt = require('bcrypt');
+const path = require('path');  // Add path module
 dotenv.config();
 
-
-const path = require('path');
-
-// Serve static files (like HTML, CSS, JS) from the 'telemed' directory
-app.use(express.static(path.join(__dirname, '../telemed')));
-
-// MySQL connection setup
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -27,29 +19,34 @@ db.connect((err) => {
   console.log('Connected to the MySQL database!');
 });
 
-// Middleware to parse incoming form data
-app.use(express.urlencoded({ extended: true }));  // For form data (urlencoded)
-app.use(express.json());  // For JSON data
+const express = require('express');
+const app = express();
 
-// Handle the form submission
-app.post('/register', (req, res) => {
-  const { firstname, lastname, age, email, tel, username, password } = req.body;
+// Serve static files from the 'telemed' folder
+app.use(express.static(path.join(__dirname, '../telemed')));
 
-  if (!firstname || !lastname || !age || !email || !tel || !username || !password) {
-    return res.status(400).send('All fields are required!');
+app.use(express.json());
+
+// Add the /add-user and /login routes...
+app.post('/add-user', (req, res) => {
+  const { username, password, role } = req.body;
+  if (!username || !password || !role) {
+    return res.status(400).send('Username, password, and role are required!');
   }
 
-  // Hash the password before saving it to the database
+  const validRoles = ['admin', 'doctor', 'patient'];
+  if (!validRoles.includes(role)) {
+    return res.status(400).send('Invalid role! Role must be one of: admin, doctor, patient.');
+  }
+
   bcrypt.hash(password, 10, (err, hashedPassword) => {
     if (err) {
       console.error('Error hashing password:', err.message);
       return res.status(500).send('Failed to hash password.');
     }
 
-    // SQL query to insert form data into the database
-    const query = `INSERT INTO users (firstname, lastname, age, email, tel, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-
-    db.query(query, [firstname, lastname, age, email, tel, username, hashedPassword], (err, result) => {
+    const query = 'INSERT INTO users (username, password, role) VALUES (?, ?, ?)';
+    db.query(query, [username, hashedPassword, role], (err, result) => {
       if (err) {
         console.error('Error inserting user:', err.message);
         return res.status(500).send('Failed to add user.');
@@ -61,14 +58,41 @@ app.post('/register', (req, res) => {
   });
 });
 
-// Serve the index.html page
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');  // Assuming index.html is in the root directory
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).send('Username and password are required!');
+  }
+
+  const query = 'SELECT * FROM users WHERE username = ?';
+  db.query(query, [username], (err, result) => {
+    if (err) {
+      console.error('Error fetching user:', err.message);
+      return res.status(500).send('Login failed.');
+    }
+
+    if (result.length > 0) {
+      bcrypt.compare(password, result[0].password, (err, isMatch) => {
+        if (err) {
+          console.error('Error comparing password:', err.message);
+          return res.status(500).send('Login failed.');
+        }
+
+        if (isMatch) {
+          res.status(200).send('Login successful!');
+          console.log('User logged in successfully.');
+        } else {
+          res.status(400).send('Incorrect password!');
+        }
+      });
+    } else {
+      res.status(404).send('User not found.');
+    }
+  });
 });
 
-// Other routes and server start
-app.get('/login', (req, res) => {
-  res.send('Login route');
+app.get('/', (req, res) => {
+  res.send('Telemedicine Backend is up and running!');
 });
 
 const PORT = process.env.PORT || 3000;
