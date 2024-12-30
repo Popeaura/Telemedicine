@@ -3,95 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediHub - Your Health, Our Priority</title>
-    <link rel="stylesheet" href="register.css">
+    <title>MediHub - Register</title>
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">
-                <h1>MediHub</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <h3>medihub</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
             </ul>
-            <div class="cta-buttons">
-                <a href="login.html" class="btn btn-login">Login</a>
-                <a href="register.html" class="btn btn-register">Register</a>
-            </div>
         </nav>
     </header>
 
     <main>
-        <section id="hero">
-            <div class="hero-content">
-                <h1>Your Health, Our Priority</h1>
-                <p>Experience top-tier medical care from the comfort of your home.</p>
-                <a href="#" class="btn btn-primary">Get Started</a>
-            </div>
-            <div class="hero-image">
-                <img src="https://i.pravatar.cc/500?img=60" alt="Doctor with patient">
-            </div>
-        </section>
+        <section id="register" class="container">
+            <h2>Create Your MediHub Account</h2>
+            <p class="form-description">Join our community of health-conscious individuals and get access to top-tier medical services.</p>
+            <form id="register-form" action="http://127.0.0.1:3000/register" method="POST">
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
+                </div>
 
-        <section id="services">
-            <h2>Our Services</h2>
-            <div class="service-grid">
-                <div class="service-card">
-                    <i class="fas fa-user-md"></i>
-                    <h3>Online Consultations</h3>
-                    <p>Connect with experienced doctors from various specialties.</p>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-pills"></i>
-                    <h3>E-Prescriptions</h3>
-                    <p>Receive and manage your prescriptions digitally.</p>
+                
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" placeholder="Enter your age" required>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-heartbeat"></i>
-                    <h3>Health Monitoring</h3>
-                    <p>Track your vital signs and health progress over time.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-comments"></i>
-                    <h3>24/7 Support</h3>
-                    <p>Get assistance anytime with our round-the-clock support team.</p>
-                </div>
-            </div>
-        </section>
 
-        <section id="about">
-            <div class="about-content">
-                <h2>About MediHub</h2>
-                <p>MediHub is revolutionizing healthcare delivery by bringing expert medical care directly to your fingertips. Our platform connects patients with top-tier medical professionals, ensuring high-quality healthcare is accessible to everyone, anywhere, anytime.</p>
-                <a href="#" class="btn btn-secondary">Learn More</a>
-            </div>
-            <div class="about-image">
-                <img src="https://i.pravatar.cc/500?img=61" alt="MediHub Team">
-            </div>
-        </section>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
 
-        <section id="testimonials">
-            <h2>What Our Patients Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p>"MediHub has been a lifesaver. I got expert medical advice without leaving my home!"</p>
-                    <div class="testimonial-author">- Sarah J.</div>
+                <div class="form-group">
+                    <label for="tel">Phone Number</label>
+                    <input type="tel" id="tel" name="tel" placeholder="Enter your phone number" required>
                 </div>
-                <div class="testimonial-card">
-                    <p>"The doctors are very professional and the platform is so easy to use. Highly recommended!"</p>
-                    <div class="testimonial-author">- Michael R.</div>
+
+                <div class="form-group">
+                    <label for="new-username">Username</label>
+                    <input type="text" id="new-username" name="username" placeholder="Choose a username" required>
                 </div>
-                <div class="testimonial-card">
-                    <p>"I love how I can track my health progress and access my medical records anytime."</p>
-                    <div class="testimonial-author">- Emily T.</div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a strong password" required>
                 </div>
-            </div>
+                
+                <button type="submit" class="btn-register">Create Account</button>
+            </form>
+            <p class="login-link">Already have an account? <a href="login.html">Log in here</a></p>
         </section>
     </main>
 
@@ -102,35 +72,41 @@
                 <p>Unmatched Expertise: Our team of specialists delivers top-tier, personalized care with the latest in medical technology. Patient-Centered Care: We prioritize comfort and clarity, making every patient feel valued and supported throughout.</p>
             </div>
             <div class="footer-links">
-                <h4>Quick Links</h4>
+                <h4>Our Socials</h4>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/benedict-ahura-96a2712ba/">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://x.com/home">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/ic3._pop/?next=%2F">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                    </li>
                 </ul>
-            </div>
-            <div class="footer-social">
-                <h4>Connect With Us</h4>
-                <div class="social-icons">
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
             </div>
             <div class="footer-contact">
                 <h4>Contact Us</h4>
-                <p>Email: <a href="mailto:contact@medihub.com">contact@medihub.com</a></p>
+                <p>Email: <a href="mailto:medihub@gmail.com">medihub@gmail.com</a></p>
                 <p>Phone: +254-217-4088</p>
                 <p>Address: 123 Kinker Lane, Nairobi City</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 MEDIHUB. All rights reserved.</p>
+            <p>&copy; 2024 MEDIHUB website. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="register.js"></script>
 </body>
 </html>
 
