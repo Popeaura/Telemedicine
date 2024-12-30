@@ -12,9 +12,9 @@ app.use(express.json());
 // Set up MySQL connection
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'telemedicine_db'
+  user: 'root',  // Your MySQL username
+  password: 'pop3_lumar21',  // Replace with your MySQL password
+  database: 'telemed_db'
 });
 
 // Connect to MySQL
@@ -25,12 +25,11 @@ db.connect((err) => {
   }
   console.log('Connected to MySQL database!');
 });
-
 // Handle POST request for user registration
-app.post('/add-user', (req, res) => {
+app.post('/register', (req, res) => {
   const { firstname, lastname, age, email, tel, username, password } = req.body;
 
-  // Basic validation (you can add more validation based on your needs)
+  // Basic validation
   if (!firstname || !lastname || !email || !password || !username) {
     return res.status(400).send('Please fill in all required fields');
   }
@@ -47,6 +46,7 @@ app.post('/add-user', (req, res) => {
     res.status(200).send('User registered successfully!');
   });
 });
+
 
 // Start the server
 app.listen(3000, () => {
