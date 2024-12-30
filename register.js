@@ -45,19 +45,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Validate Username
-        const usernamePattern = /^[a-zA-Z0-9_]+$/; // Only alphanumeric characters and underscores
+        const username = document.getElementById('username');
         if (!usernamePattern.test(username.value.trim())) {
-            showError(username, 'Username can only contain letters, numbers, and underscores');
-            isValid = false;
+        showError(username, 'Username can only contain letters, numbers, and underscores');
+        isValid = false;
         }
-        
+
         // Validate Password
+        const password = document.getElementById('password');
         const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-        if (!passwordPattern.test(password.value)) {
-            showError(password, 'Password must be at least 8 characters long, include at least one uppercase letter, one number, and one special character');
-            isValid = false;
+        if (!passwordPattern.test(password.value.trim())) {
+        showError(password, 'Password must be at least 8 characters long, include at least one uppercase letter, one number, and one special character');
+        isValid = false;
         }
-        
+
 
         // Prevent form submission if there are validation errors
         if (!isValid) {
