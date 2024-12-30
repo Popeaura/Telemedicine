@@ -1,110 +1,54 @@
-const mysql = require('mysql2');
-const dotenv = require('dotenv');
-const bcrypt = require('bcrypt');
-const path = require('path');
-dotenv.config();
-
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
-
-db.connect((err) => {
-  if (err) {
-    console.error('Database connection failed:', err.message);
-    throw err;
-  }
-  console.log('Connected to the MySQL database!');
-});
-
 const express = require('express');
 const app = express();
+const mysql = require('mysql2');  // Using mysql2 for better support
+const bodyParser = require('body-parser');
 
-// Serve static files from the root of the 'Telemedicine' folder
-app.use(express.static(path.join(__dirname, '../')));
+// Middleware to parse form data (for URL-encoded data)
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Route for register.html
-app.get('/register.html', (req, res) => {
-  console.log('Serving register.html');
-  res.sendFile(path.join(__dirname, '../register.html'));
-});
-
+// Middleware to parse JSON data (for any JSON request payload)
 app.use(express.json());
 
-// Add the /add-user and /login routes...
+// Set up MySQL connection
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'telemedicine_db'
+});
+
+// Connect to MySQL
+db.connect((err) => {
+  if (err) {
+    console.error('Failed to connect to database:', err);
+    return;
+  }
+  console.log('Connected to MySQL database!');
+});
+
+// Handle POST request for user registration
 app.post('/add-user', (req, res) => {
-  const { username, password, role } = req.body;
-  if (!username || !password || !role) {
-    return res.status(400).send('Username, password, and role are required!');
+  const { firstname, lastname, age, email, tel, username, password } = req.body;
+
+  // Basic validation (you can add more validation based on your needs)
+  if (!firstname || !lastname || !email || !password || !username) {
+    return res.status(400).send('Please fill in all required fields');
   }
 
-  const validRoles = ['admin', 'doctor', 'patient'];
-  if (!validRoles.includes(role)) {
-    return res.status(400).send('Invalid role! Role must be one of: admin, doctor, patient.');
-  }
-
-  bcrypt.hash(password, 10, (err, hashedPassword) => {
+  // SQL query to insert user data into the database
+  const query = 'INSERT INTO users (firstname, lastname, age, email, tel, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)';
+  db.query(query, [firstname, lastname, age, email, tel, username, password], (err, result) => {
     if (err) {
-      console.error('Error hashing password:', err.message);
-      return res.status(500).send('Failed to hash password.');
+      console.error('Error inserting user:', err);
+      return res.status(500).send('Error adding user');
     }
 
-    const query = 'INSERT INTO users (username, password, role) VALUES (?, ?, ?)';
-    db.query(query, [username, hashedPassword, role], (err, result) => {
-      if (err) {
-        console.error('Error inserting user:', err.message);
-        return res.status(500).send('Failed to add user.');
-      } else {
-        res.status(201).send(`User added successfully with ID: ${result.insertId}`);
-        console.log(`User added with ID: ${result.insertId}`);
-      }
-    });
+    console.log('User added:', result);
+    res.status(200).send('User registered successfully!');
   });
 });
 
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
-    return res.status(400).send('Username and password are required!');
-  }
-
-  const query = 'SELECT * FROM users WHERE username = ?';
-  db.query(query, [username], (err, result) => {
-    if (err) {
-      console.error('Error fetching user:', err.message);
-      return res.status(500).send('Login failed.');
-    }
-
-    if (result.length > 0) {
-      bcrypt.compare(password, result[0].password, (err, isMatch) => {
-        if (err) {
-          console.error('Error comparing password:', err.message);
-          return res.status(500).send('Login failed.');
-        }
-
-        if (isMatch) {
-          res.status(200).send('Login successful!');
-          console.log('User logged in successfully.');
-        } else {
-          res.status(400).send('Incorrect password!');
-        }
-      });
-    } else {
-      res.status(404).send('User not found.');
-    }
-  });
+// Start the server
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
 });
-
-// Default route to check if the server is up and running
-app.get('/', (req, res) => {
-  res.send('Telemedicine Backend is up and running!');
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-module.exports = db;
