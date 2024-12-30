@@ -2,11 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.form-container');
     
     form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+    
         // Clear previous error messages
         clearErrors();
-
+    
         let isValid = true;
-
         // Validate First Name
         const firstName = document.getElementById('firstname');
         if (firstName.value.trim() === '') {
