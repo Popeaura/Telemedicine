@@ -29,20 +29,18 @@ db.connect((err) => {
 app.post('/register', (req, res) => {
   const { firstname, lastname, age, email, tel, username, password } = req.body;
 
-  // Basic validation
-  if (!firstname || !lastname || !email || !password || !username) {
+  if (!firstname || !lastname || !email || !username || !password) {
     return res.status(400).send('Please fill in all required fields');
   }
 
-  // SQL query to insert user data into the database
   const query = 'INSERT INTO users (firstname, lastname, age, email, tel, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)';
   db.query(query, [firstname, lastname, age, email, tel, username, password], (err, result) => {
     if (err) {
-      console.error('Error inserting user:', err);
-      return res.status(500).send('Error adding user');
+      console.error('Database Error:', err); // Log detailed error
+      return res.status(500).send('Error registering user');
     }
 
-    console.log('User added:', result);
+    console.log('User registered:', result);
     res.status(200).send('User registered successfully!');
   });
 });
