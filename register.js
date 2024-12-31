@@ -73,3 +73,5 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.input-error').forEach(input => input.classList.remove('input-error'));
     }
 });
+
+
