@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 alert('Registration successful! Redirecting...');
-                window.location.href = 'index.html'; // Replace with the actual path to your login page
+                window.location.href = 'login.html'; // Replace with the actual path to your login page
             } else {
                 const error = await response.json();
                 alert(`Registration failed: ${error.message || 'Unknown error'}`);
