@@ -1,7 +1,8 @@
 const express = require('express');
-const mysql = require('mysql2'); // Using mysql2 for better support
+const mysql = require('mysql2');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv'); // For environment variables
+const dotenv = require('dotenv');
+const bcrypt = require('bcryptjs'); // For password hashing
 
 // Load environment variables from .env file
 dotenv.config();
@@ -18,7 +19,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '', // Load password from .env
+  password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'telemed_db'
 });
 
@@ -32,13 +33,16 @@ db.connect((err) => {
 });
 
 // Route: User Registration
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
   const { firstname, lastname, age, email, tel, username, password } = req.body;
 
   // Validate required fields
   if (!firstname || !lastname || !email || !username || !password) {
     return res.status(400).json({ error: 'Please fill in all required fields' });
   }
+
+  // Hash the password before saving
+  const hashedPassword = await bcrypt.hash(password, 10);
 
   // Prepare SQL query
   const query = `
@@ -47,7 +51,7 @@ app.post('/register', (req, res) => {
   `;
 
   // Execute SQL query
-  db.query(query, [firstname, lastname, age, email, tel, username, password], (err, result) => {
+  db.query(query, [firstname, lastname, age, email, tel, username, hashedPassword], (err, result) => {
     if (err) {
       console.error('Database Error:', err);
 
