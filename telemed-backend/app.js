@@ -1,52 +1,76 @@
 const express = require('express');
-const app = express();
-const mysql = require('mysql2');  // Using mysql2 for better support
+const mysql = require('mysql2'); // Using mysql2 for better support
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv'); // For environment variables
 
-// Middleware to parse form data (for URL-encoded data)
+// Load environment variables from .env file
+dotenv.config();
+
+const app = express();
+
+// Middleware to parse form data (URL-encoded)
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Middleware to parse JSON data (for any JSON request payload)
+// Middleware to parse JSON data
 app.use(express.json());
 
 // Set up MySQL connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',  // Your MySQL username
-  password: 'pop3_lumar21',  // Replace with your MySQL password
-  database: 'telemed_db'
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '', // Load password from .env
+  database: process.env.DB_NAME || 'telemed_db'
 });
 
 // Connect to MySQL
 db.connect((err) => {
   if (err) {
     console.error('Failed to connect to database:', err);
-    return;
+    process.exit(1); // Exit process if database connection fails
   }
   console.log('Connected to MySQL database!');
 });
-// Handle POST request for user registration
+
+// Route: User Registration
 app.post('/register', (req, res) => {
   const { firstname, lastname, age, email, tel, username, password } = req.body;
 
+  // Validate required fields
   if (!firstname || !lastname || !email || !username || !password) {
-    return res.status(400).send('Please fill in all required fields');
+    return res.status(400).json({ error: 'Please fill in all required fields' });
   }
 
-  const query = 'INSERT INTO users (firstname, lastname, age, email, tel, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)';
+  // Prepare SQL query
+  const query = `
+    INSERT INTO users (firstname, lastname, age, email, tel, username, password) 
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+  `;
+
+  // Execute SQL query
   db.query(query, [firstname, lastname, age, email, tel, username, password], (err, result) => {
     if (err) {
-      console.error('Database Error:', err); // Log detailed error
-      return res.status(500).send('Error registering user');
+      console.error('Database Error:', err);
+
+      // Handle specific MySQL errors
+      if (err.code === 'ER_DUP_ENTRY') {
+        return res.status(409).json({ error: 'User already exists' });
+      }
+
+      return res.status(500).json({ error: 'Error registering user' });
     }
 
     console.log('User registered:', result);
-    res.status(200).json({ message: 'User registered successfully!' });
+    res.status(201).json({ message: 'User registered successfully!' });
   });
 });
 
+// Catch-all route for unmatched endpoints
+app.use((req, res) => {
+  res.status(404).json({ error: 'Endpoint not found' });
+});
 
 // Start the server
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
