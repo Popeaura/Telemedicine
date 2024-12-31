@@ -41,7 +41,7 @@ app.post('/register', (req, res) => {
     }
 
     console.log('User registered:', result);
-    res.status(200).send('User registered successfully!');
+    res.status(200).json({ message: 'User registered successfully!' });
   });
 });
 
