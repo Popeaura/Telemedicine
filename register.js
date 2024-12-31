@@ -5,19 +5,27 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async function(event) {
         event.preventDefault(); // Prevent default form submission
 
-        // Clear previous error messages
-        clearErrors();
-
+        clearErrors(); // Clear previous errors
         let isValid = true;
 
-        // Perform client-side validation here
-        // (Add your validation logic)
+        // Client-side validation
+        form.querySelectorAll('input[required]').forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.classList.add('input-error'); // Highlight error field
+                showError(input, `${input.placeholder || input.name} is required`);
+            }
+        });
 
-        if (!isValid) {
-            return; // Stop if validation fails
+        const email = form.querySelector('input[name="email"]');
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+            isValid = false;
+            showError(email, 'Invalid email address');
         }
 
-        // Disable submit button and show loading state
+        if (!isValid) return; // Stop if validation fails
+
+        // Show loading state
         submitButton.disabled = true;
         submitButton.innerHTML = 'Registering...';
 
@@ -25,8 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(form);
         const jsonData = Object.fromEntries(formData.entries());
         jsonData.role = "patient"; // Add role if it's not in the form
-
-        console.log('Submitting form data:', jsonData);
 
         try {
             const response = await fetch('http://127.0.0.1:3000/register', {
@@ -37,29 +43,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(jsonData),
             });
 
-            console.log('Response received:', response);
-
             if (response.ok) {
                 const data = await response.json();
-                console.log('Success response data:', data);
                 alert(data.message || 'Registration successful!');
                 window.location.href = 'login.html'; // Redirect on success
             } else {
                 const error = await response.json();
-                console.error('Error response data:', error);
                 showError(form, `Registration failed: ${error.message || 'Unknown error'}`);
             }
         } catch (err) {
             console.error('Fetch error:', err);
             showError(form, 'An error occurred while submitting the form. Please try again later.');
         } finally {
-            // Re-enable submit button and restore original text
+            // Restore submit button state
             submitButton.disabled = false;
             submitButton.innerHTML = 'Create Account';
         }
     });
 
-    // Function to show an error message
     function showError(element, message) {
         const error = document.createElement('div');
         error.className = 'error-message';
@@ -67,12 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
         element.insertAdjacentElement('afterend', error);
     }
 
-    // Function to clear all error messages
     function clearErrors() {
-        const errors = document.querySelectorAll('.error-message');
-        errors.forEach(error => error.remove());
-
-        const inputs = document.querySelectorAll('.input-error');
-        inputs.forEach(input => input.classList.remove('input-error'));
+        document.querySelectorAll('.error-message').forEach(error => error.remove());
+        document.querySelectorAll('.input-error').forEach(input => input.classList.remove('input-error'));
     }
 });
