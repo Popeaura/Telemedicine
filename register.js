@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('.form-container');
+    const form = document.querySelector('#register-form');
+    const submitButton = form.querySelector('button[type="submit"]');
 
     form.addEventListener('submit', async function(event) {
         event.preventDefault(); // Prevent default form submission
@@ -9,25 +10,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let isValid = true;
 
-        // (Validation code remains the same)
+        // Perform client-side validation here
+        // (Add your validation logic)
 
         if (!isValid) {
             return; // Stop if validation fails
         }
 
-        // Collect form data
-        const formData = {
-            firstname: document.getElementById('firstname').value.trim(),
-            lastname: document.getElementById('lastname').value.trim(),
-            age: document.getElementById('age').value.trim(),
-            email: document.getElementById('email').value.trim(),
-            tel: document.getElementById('tel').value.trim(),
-            username: document.getElementById('username').value.trim(),
-            password: document.getElementById('password').value.trim(),
-            role: "patient",
-        };
+        // Disable submit button and show loading state
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Registering...';
 
-        console.log('Submitting form data:', formData);
+        // Collect form data
+        const formData = new FormData(form);
+        const jsonData = Object.fromEntries(formData.entries());
+        jsonData.role = "patient"; // Add role if it's not in the form
+
+        console.log('Submitting form data:', jsonData);
 
         try {
             const response = await fetch('http://127.0.0.1:3000/register', {
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(jsonData),
             });
 
             console.log('Response received:', response);
@@ -48,22 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 const error = await response.json();
                 console.error('Error response data:', error);
-                alert(`Registration failed: ${error.message || 'Unknown error'}`);
+                showError(form, `Registration failed: ${error.message || 'Unknown error'}`);
             }
         } catch (err) {
             console.error('Fetch error:', err);
-            alert('An error occurred while submitting the form.');
+            showError(form, 'An error occurred while submitting the form. Please try again later.');
+        } finally {
+            // Re-enable submit button and restore original text
+            submitButton.disabled = false;
+            submitButton.innerHTML = 'Create Account';
         }
     });
-
 
     // Function to show an error message
     function showError(element, message) {
         const error = document.createElement('div');
         error.className = 'error-message';
         error.innerText = message;
-        element.parentElement.insertBefore(error, element.nextSibling);
-        element.classList.add('input-error');
+        element.insertAdjacentElement('afterend', error);
     }
 
     // Function to clear all error messages
