@@ -11,27 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // (Validation code remains the same)
 
-        // Prevent form submission if validation fails
         if (!isValid) {
-            return;
+            return; // Stop if validation fails
         }
 
         // Collect form data
         const formData = {
-            firstname: firstName.value.trim(),
-            lastname: lastName.value.trim(),
-            age: age.value.trim(),
-            email: email.value.trim(),
-            tel: phone.value.trim(),
-            username: username.value.trim(),
-            password: password.value.trim(),
-            role: "patient", // Example static role
+            firstname: document.getElementById('firstname').value.trim(),
+            lastname: document.getElementById('lastname').value.trim(),
+            age: document.getElementById('age').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            tel: document.getElementById('tel').value.trim(),
+            username: document.getElementById('username').value.trim(),
+            password: document.getElementById('password').value.trim(),
+            role: "patient",
         };
 
         console.log('Submitting form data:', formData);
 
         try {
-            // Submit form data to the server
             const response = await fetch('http://127.0.0.1:3000/register', {
                 method: 'POST',
                 headers: {
@@ -40,24 +38,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(formData),
             });
 
-            console.log('Response status:', response.status);
-            console.log('Response body:', await response.text());
+            console.log('Response received:', response);
 
             if (response.ok) {
-                alert('Registration successful! Redirecting...');
-                window.location.href = 'login.html'; // Replace with actual URL
+                const data = await response.json();
+                console.log('Success response data:', data);
+                alert(data.message || 'Registration successful!');
+                window.location.href = 'login.html'; // Redirect on success
             } else {
                 const error = await response.json();
+                console.error('Error response data:', error);
                 alert(`Registration failed: ${error.message || 'Unknown error'}`);
             }
-        } catch (error) {
-            console.error('Error occurred:', error);
+        } catch (err) {
+            console.error('Fetch error:', err);
             alert('An error occurred while submitting the form.');
         }
     });
-
-    // (Error handling functions remain unchanged)
-});
 
 
     // Function to show an error message
