@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show loading state
         submitButton.disabled = true;
         submitButton.innerHTML = 'Registering...';
+        disableFormInputs(true);
 
         // Collect form data
         const formData = new FormData(form);
@@ -45,19 +46,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 const data = await response.json();
-                alert(data.message || 'Registration successful!');
-                window.location.href = 'login.html'; // Redirect on success
+                showSuccess(data.message || 'Registration successful! Redirecting to login page...');
+                
+                // Delay redirect to show success message
+                setTimeout(() => {
+                    submitButton.innerHTML = 'Redirecting...';
+                    window.location.href = 'login.html';
+                }, 2000);
             } else {
                 const error = await response.json();
                 showError(form, `Registration failed: ${error.message || 'Unknown error'}`);
+                disableFormInputs(false);
             }
         } catch (err) {
             console.error('Fetch error:', err);
             showError(form, 'An error occurred while submitting the form. Please try again later.');
+            disableFormInputs(false);
         } finally {
-            // Restore submit button state
-            submitButton.disabled = false;
-            submitButton.innerHTML = 'Create Account';
+            // Restore submit button state if not redirecting
+            if (!response.ok) {
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Create Account';
+            }
         }
     });
 
@@ -68,10 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
         element.insertAdjacentElement('afterend', error);
     }
 
+    function showSuccess(message) {
+        const success = document.createElement('div');
+        success.className = 'success-message';
+        success.innerText = message;
+        form.insertAdjacentElement('beforebegin', success);
+    }
+
     function clearErrors() {
-        document.querySelectorAll('.error-message').forEach(error => error.remove());
+        document.querySelectorAll('.error-message, .success-message').forEach(msg => msg.remove());
         document.querySelectorAll('.input-error').forEach(input => input.classList.remove('input-error'));
     }
+
+    function disableFormInputs(disable) {
+        form.querySelectorAll('input, button').forEach(el => el.disabled = disable);
+    }
 });
-
-
