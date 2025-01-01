@@ -2,6 +2,11 @@ const express = require('express');
 const mysql = require('mysql2'); // Using mysql2 for better support
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv'); // For environment variables
+const path = require('path');
+
+// Serve static files from the root folder
+app.use(express.static(path.join(__dirname, '.')));
+
 
 // Load environment variables from .env file
 dotenv.config();
@@ -32,7 +37,7 @@ db.connect((err) => {
 });
 
 // Route: User Registration
-app.post('/register', (req, res) => {
+app.post('/register.html', (req, res) => {
   const { firstname, lastname, age, email, tel, username, password } = req.body;
 
   // Validate required fields
