@@ -37,7 +37,7 @@ db.connect((err) => {
 });
 
 // Route: User Registration
-app.post('/register.html', (req, res) => {
+app.post('/register.', (req, res) => {
   const { firstname, lastname, age, email, tel, username, password } = req.body;
 
   // Validate required fields
