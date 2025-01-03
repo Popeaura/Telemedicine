@@ -3,16 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = form.querySelector('button[type="submit"]');
 
     form.addEventListener('submit', async function(event) {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
 
-        clearErrors(); // Clear previous errors
+        clearErrors();
         let isValid = true;
 
-        // Client-side validation
         form.querySelectorAll('input[required]').forEach(input => {
             if (!input.value.trim()) {
                 isValid = false;
-                input.classList.add('input-error'); // Highlight error field
+                input.classList.add('input-error');
                 showError(input, `${input.placeholder || input.name} is required`);
             }
         });
@@ -23,17 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
             showError(email, 'Invalid email address');
         }
 
-        if (!isValid) return; // Stop if validation fails
+        if (!isValid) return;
 
-        // Show loading state
         submitButton.disabled = true;
         submitButton.innerHTML = 'Registering...';
         disableFormInputs(true);
 
-        // Collect form data
         const formData = new FormData(form);
         const jsonData = Object.fromEntries(formData.entries());
-        jsonData.role = "patient"; // Add role if it's not in the form
+        jsonData.role = "patient";
 
         try {
             const response = await fetch('http://127.0.0.1:3000/register', {
@@ -48,26 +45,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
                 showSuccess(data.message || 'Registration successful! Redirecting to login page...');
                 
-                // Delay redirect to show success message
-                setTimeout(() => {
-                    submitButton.innerHTML = 'Redirecting...';
-                    window.location.href = 'login.html';
-                }, 2000);
+                // Immediate redirect to login page
+                window.location.href = 'login.html';
             } else {
                 const error = await response.json();
                 showError(form, `Registration failed: ${error.message || 'Unknown error'}`);
                 disableFormInputs(false);
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Create Account';
             }
         } catch (err) {
             console.error('Fetch error:', err);
             showError(form, 'An error occurred while submitting the form. Please try again later.');
             disableFormInputs(false);
-        } finally {
-            // Restore submit button state if not redirecting
-            if (!response.ok) {
-                submitButton.disabled = false;
-                submitButton.innerHTML = 'Create Account';
-            }
+            submitButton.disabled = false;
+            submitButton.innerHTML = 'Create Account';
         }
     });
 
