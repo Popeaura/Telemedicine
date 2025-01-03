@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.disabled = true;
         submitButton.innerHTML = 'Registering...';
 
-    
-
         clearErrors();
         let isValid = true;
 
@@ -26,15 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
             showError(email, 'Invalid email address');
         }
 
-        if (!isValid) return;
-
-        submitButton.disabled = true;
-        submitButton.innerHTML = 'Registering...';
-        disableFormInputs(true);
+        if (!isValid) {
+            submitButton.disabled = false;
+            submitButton.innerHTML = 'Create Account';
+            return;
+        }
 
         const formData = new FormData(form);
         const jsonData = Object.fromEntries(formData.entries());
         jsonData.role = "patient";
+
         try {
             const response = await fetch('http://127.0.0.1:3000/register', {
                 method: 'POST',
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = 'login.html';
             } else {
                 const error = await response.json();
-                alert(`Registration Failed: ${error.message || 'Unknown error'}`);
+                alert(`Registration Failed: ${error.error || 'Unknown error'}`);
             }
         } catch (err) {
             console.error('Error:', err);
@@ -58,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.innerHTML = 'Create Account';
         }
     });
-});
+
     function showError(element, message) {
         const error = document.createElement('div');
         error.className = 'error-message';
@@ -66,19 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
         element.insertAdjacentElement('afterend', error);
     }
 
-    function showSuccess(message) {
-        const success = document.createElement('div');
-        success.className = 'success-message';
-        success.innerText = message;
-        form.insertAdjacentElement('beforebegin', success);
-    }
-
     function clearErrors() {
-        document.querySelectorAll('.error-message, .success-message').forEach(msg => msg.remove());
+        document.querySelectorAll('.error-message').forEach(msg => msg.remove());
         document.querySelectorAll('.input-error').forEach(input => input.classList.remove('input-error'));
-    }
-
-    function disableFormInputs(disable) {
-        form.querySelectorAll('input, button').forEach(el => el.disabled = disable);
     }
 });
