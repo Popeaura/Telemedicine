@@ -37,29 +37,38 @@ db.connect((err) => {
   console.log('Connected to MySQL database!');
 });
 
+// Middleware: Authenticate JWT
+const authenticate = (req, res, next) => {
+  const token = req.headers['authorization'];
+  if (!token) return res.status(403).send({ message: 'No token provided' });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret-key');
+    req.userId = decoded.id; // Store user ID in request object
+    next();
+  } catch (error) {
+    console.error('Token Verification Error:', error);
+    res.status(401).send({ message: 'Invalid token' });
+  }
+};
+
 // Route: User Registration with bcrypt and accountNumber
 app.post('/register', async (req, res) => {
   const { firstname, lastname, age, email, tel, username, password } = req.body;
 
-  // Validate required fields
   if (!firstname || !lastname || !email || !username || !password) {
     return res.status(400).json({ error: 'Please fill in all required fields' });
   }
 
   try {
-    // Hash the password using bcrypt
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Generate a unique account number
     const accountNumber = `ACC-${Date.now()}`; // Example unique ID
 
-    // Prepare SQL query
     const query = `
       INSERT INTO users (firstname, lastname, age, email, tel, username, password, account_number) 
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
-    // Execute SQL query
     db.query(
       query,
       [firstname, lastname, age, email, tel, username, hashedPassword, accountNumber],
@@ -67,7 +76,6 @@ app.post('/register', async (req, res) => {
         if (err) {
           console.error('Database Error:', err);
 
-          // Handle specific MySQL errors
           if (err.code === 'ER_DUP_ENTRY') {
             return res.status(409).json({ error: 'User already exists' });
           }
@@ -75,10 +83,9 @@ app.post('/register', async (req, res) => {
           return res.status(500).json({ error: 'Error registering user' });
         }
 
-        console.log('User registered:', result);
         res.status(201).json({ 
           message: 'User registered successfully!', 
-          accountNumber // Send back the generated account number
+          accountNumber 
         });
       }
     );
@@ -93,7 +100,6 @@ app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Fetch user by email
     db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
       if (err) {
         console.error('Database Error:', err);
@@ -105,14 +111,11 @@ app.post('/login', async (req, res) => {
       }
 
       const user = results[0];
-
-      // Check password
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
         return res.status(401).send({ message: 'Invalid credentials' });
       }
 
-      // Generate JWT
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET || 'secret-key', { expiresIn: '1h' });
 
       res.send({ message: 'Login successful', token });
@@ -121,6 +124,11 @@ app.post('/login', async (req, res) => {
     console.error('Login Error:', error);
     res.status(500).send({ message: 'Error logging in' });
   }
+});
+
+// Route: Protected Dashboard
+app.get('/dashboard', authenticate, (req, res) => {
+  res.send({ message: `Welcome to the dashboard, User ID: ${req.userId}!` });
 });
 
 // Catch-all route for unmatched endpoints
