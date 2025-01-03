@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv'); // For environment variables
 const path = require('path');
 const bcrypt = require('bcrypt'); // For password hashing
+const jwt = require('jsonwebtoken'); // For generating and verifying JWT
 
 // Load environment variables from .env file
 dotenv.config();
@@ -84,6 +85,41 @@ app.post('/register', async (req, res) => {
   } catch (error) {
     console.error('Error hashing password:', error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Route: User Login with JWT
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // Fetch user by email
+    db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
+      if (err) {
+        console.error('Database Error:', err);
+        return res.status(500).send({ message: 'Database error' });
+      }
+
+      if (!results.length) {
+        return res.status(404).send({ message: 'User not found' });
+      }
+
+      const user = results[0];
+
+      // Check password
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (!isPasswordValid) {
+        return res.status(401).send({ message: 'Invalid credentials' });
+      }
+
+      // Generate JWT
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET || 'secret-key', { expiresIn: '1h' });
+
+      res.send({ message: 'Login successful', token });
+    });
+  } catch (error) {
+    console.error('Login Error:', error);
+    res.status(500).send({ message: 'Error logging in' });
   }
 });
 
