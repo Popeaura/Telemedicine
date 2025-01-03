@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('submit', async function(event) {
         event.preventDefault();
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Registering...';
+
+    
 
         clearErrors();
         let isValid = true;
@@ -31,38 +35,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(form);
         const jsonData = Object.fromEntries(formData.entries());
         jsonData.role = "patient";
-
         try {
             const response = await fetch('http://127.0.0.1:3000/register', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(jsonData),
             });
 
             if (response.ok) {
                 const data = await response.json();
-                showSuccess(data.message || 'Registration successful! Redirecting to login page...');
-                
-                // Immediate redirect to login page
+                alert(`Registration Successful! Your Account Number: ${data.accountNumber}`);
                 window.location.href = 'login.html';
             } else {
                 const error = await response.json();
-                showError(form, `Registration failed: ${error.message || 'Unknown error'}`);
-                disableFormInputs(false);
-                submitButton.disabled = false;
-                submitButton.innerHTML = 'Create Account';
+                alert(`Registration Failed: ${error.message || 'Unknown error'}`);
             }
         } catch (err) {
-            console.error('Fetch error:', err);
-            showError(form, 'An error occurred while submitting the form. Please try again later.');
-            disableFormInputs(false);
+            console.error('Error:', err);
+            alert('An error occurred. Please try again later.');
+        } finally {
             submitButton.disabled = false;
             submitButton.innerHTML = 'Create Account';
         }
     });
-
+});
     function showError(element, message) {
         const error = document.createElement('div');
         error.className = 'error-message';
