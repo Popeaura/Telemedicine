@@ -3,6 +3,7 @@ const mysql = require('mysql2'); // Using mysql2 for better support
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv'); // For environment variables
 const path = require('path');
+const bcrypt = require('bcrypt'); // For password hashing
 
 // Load environment variables from .env file
 dotenv.config();
@@ -35,8 +36,8 @@ db.connect((err) => {
   console.log('Connected to MySQL database!');
 });
 
-// Route: User Registration
-app.post('/register', (req, res) => {
+// Route: User Registration with bcrypt and accountNumber
+app.post('/register', async (req, res) => {
   const { firstname, lastname, age, email, tel, username, password } = req.body;
 
   // Validate required fields
@@ -44,31 +45,46 @@ app.post('/register', (req, res) => {
     return res.status(400).json({ error: 'Please fill in all required fields' });
   }
 
-  // Prepare SQL query
-  const query = `
-    INSERT INTO users (firstname, lastname, age, email, tel, username, password) 
-    VALUES (?, ?, ?, ?, ?, ?, ?)
-  `;
+  try {
+    // Hash the password using bcrypt
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-  // Execute SQL query
-  db.query(query, [firstname, lastname, age, email, tel, username, password], (err, result) => {
-    if (err) {
-      console.error('Database Error:', err);
+    // Generate a unique account number
+    const accountNumber = `ACC-${Date.now()}`; // Example unique ID
 
-      // Handle specific MySQL errors
-      if (err.code === 'ER_DUP_ENTRY') {
-        return res.status(409).json({ error: 'User already exists' });
+    // Prepare SQL query
+    const query = `
+      INSERT INTO users (firstname, lastname, age, email, tel, username, password, account_number) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    // Execute SQL query
+    db.query(
+      query,
+      [firstname, lastname, age, email, tel, username, hashedPassword, accountNumber],
+      (err, result) => {
+        if (err) {
+          console.error('Database Error:', err);
+
+          // Handle specific MySQL errors
+          if (err.code === 'ER_DUP_ENTRY') {
+            return res.status(409).json({ error: 'User already exists' });
+          }
+
+          return res.status(500).json({ error: 'Error registering user' });
+        }
+
+        console.log('User registered:', result);
+        res.status(201).json({ 
+          message: 'User registered successfully!', 
+          accountNumber // Send back the generated account number
+        });
       }
-
-      return res.status(500).json({ error: 'Error registering user' });
-    }
-
-    console.log('User registered:', result);
-    res.status(201).json({ message: 'User registered successfully!' });
-
-    // On success, redirect to another page or return a response
-  res.redirect('/success'); // Redirect to a success page (if created)
-  });
+    );
+  } catch (error) {
+    console.error('Error hashing password:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // Catch-all route for unmatched endpoints
