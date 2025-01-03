@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('#login form');
+    const form = document.querySelector('#login .form-container');
     const submitButton = form.querySelector('button[type="submit"]');
 
     form.addEventListener('submit', async function(event) {
@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
-                alert('Login Successful!');
+                localStorage.setItem('accountNumber', data.accountNumber);
+                alert(`Login Successful! Your Account Number: ${data.accountNumber}`);
                 window.location.href = 'patient_dashboard.html';
             } else {
                 const error = await response.json();
