@@ -66,6 +66,9 @@ app.post('/register', (req, res) => {
 
     console.log('User registered:', result);
     res.status(201).json({ message: 'User registered successfully!' });
+
+    // On success, redirect to another page or return a response
+  res.redirect('/success'); // Redirect to a success page (if created)
   });
 });
 
