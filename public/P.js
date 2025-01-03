@@ -13,15 +13,15 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.logout').addEventListener('click', logout);
     document.querySelector('.update-button').addEventListener('click', updatePatientInfo);
     document.querySelector('.add-prescription').addEventListener('click', addPrescription);
+    document.querySelector('.notifications').addEventListener('click', fetchNotifications);
 
-    // Setup other interactive elements
-    setupNotifications();
+    // Setup sidebar
     setupSidebar();
 });
 
 async function fetchPatientData() {
     try {
-        const response = await fetch('http://127.0.0.1:3000/patient-data', {
+        const response = await fetch('http://localhost:3000/patient-data', {
             headers: {
                 'Authorization': localStorage.getItem('token')
             }
@@ -43,7 +43,7 @@ function updateDashboard(data) {
     // Update patient info
     document.querySelector('.patient-card h2').textContent = data.name;
     document.querySelector('.patient-card p').textContent = `Age: ${data.age}`;
-    document.querySelector('.patient-avatar').src = data.avatarUrl || 'https://i.pravatar.cc/150?img=4';
+    document.querySelector('.patient-avatar').src = data.avatarUrl;
 
     // Update patient details
     const infoCard = document.querySelector('.info-card dl');
@@ -100,22 +100,98 @@ function logout() {
     window.location.href = 'login.html';
 }
 
-function updatePatientInfo() {
-    // Implement patient info update logic here
-    alert('Update patient info functionality to be implemented');
+async function updatePatientInfo() {
+    const height = prompt('Enter new height (in cm):');
+    const weight = prompt('Enter new weight (in kg):');
+
+    if (height && weight) {
+        try {
+            const response = await fetch('http://localhost:3000/update-patient-info', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': localStorage.getItem('token')
+                },
+                body: JSON.stringify({ height, weight })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to update patient info');
+            }
+
+            alert('Patient info updated successfully');
+            fetchPatientData();
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to update patient info. Please try again later.');
+        }
+    }
 }
 
-function addPrescription() {
-    // Implement add prescription logic here
-    alert('Add prescription functionality to be implemented');
+async function addPrescription() {
+    const title = prompt('Enter prescription title:');
+    const duration = prompt('Enter prescription duration:');
+
+    if (title && duration) {
+        try {
+            const response = await fetch('http://localhost:3000/add-prescription', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': localStorage.getItem('token')
+                },
+                body: JSON.stringify({ title, duration })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add prescription');
+            }
+
+            alert('Prescription added successfully');
+            fetchPatientData();
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to add prescription. Please try again later.');
+        }
+    }
 }
 
-function setupNotifications() {
-    const notificationButton = document.querySelector('.notifications');
-    notificationButton.addEventListener('click', () => {
-        // Implement notifications logic here
-        alert('Notifications functionality to be implemented');
-    });
+async function fetchNotifications() {
+    try {
+        const response = await fetch('http://localhost:3000/notifications', {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch notifications');
+        }
+
+        const notifications = await response.json();
+        displayNotifications(notifications);
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to fetch notifications. Please try again later.');
+    }
+}
+
+function displayNotifications(notifications) {
+    const notificationList = notifications.map(notification => 
+        `<li>${notification.message} (${new Date(notification.date).toLocaleDateString()})</li>`
+    ).join('');
+
+    const notificationModal = document.createElement('div');
+    notificationModal.className = 'notification-modal';
+    notificationModal.innerHTML = `
+        <div class="notification-content">
+            <h3>Notifications</h3>
+            <ul>${notificationList}</ul>
+            <button onclick="this.closest('.notification-modal').remove()">Close</button>
+        </div>
+    `;
+
+    document.body.appendChild(notificationModal);
 }
 
 function setupSidebar() {
