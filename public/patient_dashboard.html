@@ -3,41 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Improved Patient Dashboard</title>
+    <title>Patient Dashboard</title>
     <link rel="stylesheet" href="P-dash.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard">
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">+</div>
             <nav>
-                <a href="#" class="active" title="Dashboard"><i class="material-icons">dashboard</i><span>Dashboard</span></a>
-                <a href="#" title="Patients"><i class="material-icons">person</i><span>Patients</span></a>
-                <a href="#" title="Appointments"><i class="material-icons">event</i><span>Appointments</span></a>
-                <a href="#" title="Reports"><i class="material-icons">description</i><span>Reports</span></a>
-                <a href="#" title="Analytics"><i class="material-icons">bar_chart</i><span>Analytics</span></a>
-                <a href="#" title="Settings"><i class="material-icons">settings</i><span>Settings</span></a>
+                <a href="#" class="active"><i class="material-icons">dashboard</i></a>
+                <a href="#"><i class="material-icons">person</i></a>
+                <a href="#"><i class="material-icons">event</i></a>
+                <a href="#"><i class="material-icons">description</i></a>
+                <a href="#"><i class="material-icons">bar_chart</i></a>
+                <a href="#"><i class="material-icons">settings</i></a>
             </nav>
-            <button class="logout" title="Logout">
-                <i class="material-icons">exit_to_app</i><span>Logout</span>
+            <button class="logout">
+                <i class="material-icons">exit_to_app</i>
             </button>
         </aside>
 
+        <!-- Main Content -->
         <main class="content">
+            <!-- Back Button -->
+            <p class="back-button-container">
+                <a href="index.html" class="back-button">
+                    <i class="material-icons">arrow_back</i> Back to Dashboard
+                </a>
+            </p>
+
+            <!-- Header -->
             <header>
-                <h1>Current Appointment</h1>
+                <div class="header-left">
+                    <h1>Current Appointment</h1>
+                </div>
                 <div class="header-right">
-                    <button class="notifications" id="notificationsBtn">
+                    <button class="notifications">
                         <i class="material-icons">notifications</i>
-                        <span class="notification-badge">2</span>
                     </button>
                     <div class="avatar">DR</div>
                 </div>
             </header>
 
+            <!-- Main Content Area -->
             <div class="main-content">
-                <section class="patient-info">
+                <!-- Patient Information -->
+                <div class="patient-info">
                     <div class="patient-card">
                         <img src="https://i.pravatar.cc/150?img=4" alt="Roger Curtis" class="patient-avatar">
                         <h2>Roger Curtis</h2>
@@ -66,9 +80,11 @@
                             <dd>25th October 2019</dd>
                         </dl>
                     </div>
-                </section>
+                </div>
 
-                <section class="patient-dashboard">
+                <!-- Patient Dashboard -->
+                <div class="patient-dashboard">
+                    <!-- Vitals -->
                     <div class="vitals">
                         <div class="vital-card">
                             <div class="vital-info">
@@ -93,6 +109,7 @@
                         </div>
                     </div>
 
+                    <!-- Test Reports -->
                     <div class="test-reports">
                         <h3>Test Reports</h3>
                         <div class="report">
@@ -124,6 +141,7 @@
                         </div>
                     </div>
 
+                    <!-- Prescriptions -->
                     <div class="prescriptions">
                         <h3>Prescriptions</h3>
                         <button class="add-prescription">
@@ -151,20 +169,9 @@
                             </tbody>
                         </table>
                     </div>
-                </section>
+                </div>
             </div>
         </main>
-    </div>
-
-    <div id="notificationModal" class="modal">
-        <div class="modal-content">
-            <h3>Notifications</h3>
-            <ul>
-                <li>New appointment scheduled</li>
-                <li>Test results are ready</li>
-            </ul>
-            <button id="closeModal">Close</button>
-        </div>
     </div>
 
     <script src="P.js"></script>
