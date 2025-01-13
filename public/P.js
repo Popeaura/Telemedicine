@@ -1,30 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const sidebar = document.querySelector('.sidebar');
-    const content = document.querySelector('.content');
-    const notificationsBtn = document.getElementById('notificationsBtn');
-    const notificationModal = document.getElementById('notificationModal');
-    const closeModal = document.getElementById('closeModal');
-
-    // Toggle sidebar
-    content.addEventListener('click', function() {
-        sidebar.classList.toggle('collapsed');
-    });
-
-    // Open notification modal
-    notificationsBtn.addEventListener('click', function() {
-        notificationModal.style.display = 'block';
-    });
-
-    // Close notification modal
-    closeModal.addEventListener('click', function() {
-        notificationModal.style.display = 'none';
-    });
-
-    // Close modal when clicking outside
-    window.addEventListener('click', function(event) {
-        if (event.target == notificationModal) {
-            notificationModal.style.display = 'none';
+    // Weight Trend Chart
+    const ctx = document.getElementById('weightChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Weight (kg)',
+                data: [75, 74, 73, 72, 71, 70],
+                borderColor: '#4a90e2',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
         }
     });
-});
 
+    // Update current date
+    const dateElement = document.querySelector('.date');
+    const currentDate = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    dateElement.textContent = currentDate.toLocaleDateString('en-US', options);
+});

@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Dashboard</title>
-    <link rel="stylesheet" href="P-dash.css">
+    <title>Patient's Dashboard</title>
+    <link rel="stylesheet" href="patient-dash.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard">
@@ -14,215 +15,127 @@
         <aside class="sidebar">
             <div class="logo">+</div>
             <nav>
-                <a href="#" class="active"><i class="material-icons">dashboard</i></a>
-                <a href="#"><i class="material-icons">person</i></a>
-                <a href="#"><i class="material-icons">event</i></a>
-                <a href="#"><i class="material-icons">description</i></a>
-                <a href="#"><i class="material-icons">bar_chart</i></a>
-                <a href="#"><i class="material-icons">settings</i></a>
+                <a href="#" class="active" aria-label="Dashboard"><i class="material-icons">dashboard</i></a>
+                <a href="#" aria-label="Appointments"><i class="material-icons">event</i></a>
+                <a href="#" aria-label="Medical Records"><i class="material-icons">folder</i></a>
+                <a href="#" aria-label="Messages"><i class="material-icons">message</i></a>
+                <a href="#" aria-label="Prescriptions"><i class="material-icons">receipt</i></a>
+                <a href="#" aria-label="Settings"><i class="material-icons">settings</i></a>
             </nav>
-            <button class="logout">
+            <button class="logout" aria-label="Logout">
                 <i class="material-icons">exit_to_app</i>
             </button>
         </aside>
 
         <!-- Main Content -->
         <main class="content">
-            <!-- Back Button -->
-            <p class="back-button-container">
-                <a href="index.html" class="back-button">
-                    <i class="material-icons">arrow_back</i> Back to Dashboard
-                </a>
-            </p>
-
-            <!-- Header -->
             <header>
-                <div class="header-left">
-                    <h1>Current Appointment</h1>
-                </div>
-                <div class="header-right">
-                    <button class="notifications">
-                        <i class="material-icons">notifications</i>
-                    </button>
-                    <div class="avatar">DR</div>
-                </div>
+                <h1>Patient Dashboard</h1>
+                <div class="date">Thursday, 27 March 2024</div>
             </header>
 
-            <!-- Main Content Area -->
-            <div class="main-content">
-                <!-- Patient Information -->
-                <div class="patient-info">
-                    <div class="patient-card">
-                        <img src="https://i.pravatar.cc/150?img=4" alt="Roger Curtis" class="patient-avatar">
-                        <h2>Roger Curtis</h2>
-                        <p>Age: 10</p>
-                        <button class="update-button">Update</button>
-                    </div>
-
-                    <div class="info-card">
-                        <h3>Information</h3>
-                        <dl>
-                            <dt>Gender:</dt>
-                            <dd>Male</dd>
-                            <dt>Blood Type:</dt>
-                            <dd>O+ (Positive)</dd>
-                            <dt>Allergies:</dt>
-                            <dd>Milk, Penicillin</dd>
-                            <dt>Diseases:</dt>
-                            <dd>Diabetes, Blood Disorders</dd>
-                            <dt>Height:</dt>
-                            <dd>76cm</dd>
-                            <dt>Weight:</dt>
-                            <dd>35 kg</dd>
-                            <dt>Patient ID:</dt>
-                            <dd>208809786</dd>
-                            <dt>Last Visit:</dt>
-                            <dd>25th October 2019</dd>
-                        </dl>
-                    </div>
+            <section class="welcome-section">
+                <div class="welcome-text">
+                    <h2>Welcome, John!</h2>
+                    <p>Your next appointment is in <strong>2 days</strong>.</p>
+                    <p class="reminder">Remember to bring your latest test results.</p>
                 </div>
+                <span class="material-icons welcome-icon">personal_injury</span>
+            </section>
 
-                <!-- Patient Dashboard -->
-                <div class="patient-dashboard">
-                    <!-- Vitals -->
-                    <div class="vitals">
-                        <div class="vital-card">
-                            <div class="vital-info">
-                                <i class="material-icons">favorite</i>
-                                <p>Heart Rate</p>
-                                <div class="vital-value">80 <span>bpm</span></div>
+            <div class="dashboard-grid">
+                <!-- Upcoming Appointments -->
+                <section class="appointments-section">
+                    <h3>Upcoming Appointments</h3>
+                    <div class="appointments-list">
+                        <article class="appointment">
+                            <img src="https://i.pravatar.cc/150?img=8" alt="Dr. Sarah Johnson" class="doctor-avatar">
+                            <div class="appointment-info">
+                                <h4>Dr. Sarah Johnson</h4>
+                                <p>General Check-up</p>
                             </div>
-                        </div>
-                        <div class="vital-card">
-                            <div class="vital-info">
-                                <i class="material-icons">thermostat</i>
-                                <p>Body Temperature</p>
-                                <div class="vital-value">36.5 <span>°C</span></div>
+                            <div class="appointment-time">March 29, 10:00 AM</div>
+                        </article>
+                        <article class="appointment">
+                            <img src="https://i.pravatar.cc/150?img=9" alt="Dr. Michael Lee" class="doctor-avatar">
+                            <div class="appointment-info">
+                                <h4>Dr. Michael Lee</h4>
+                                <p>Cardiology Follow-up</p>
                             </div>
-                        </div>
-                        <div class="vital-card">
-                            <div class="vital-info">
-                                <i class="material-icons">opacity</i>
-                                <p>Glucose</p>
-                                <div class="vital-value">100 <span>mg/dl</span></div>
+                            <div class="appointment-time">April 5, 2:00 PM</div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Health Metrics -->
+                <section class="metrics-section">
+                    <div class="metric-card">
+                        <h3>Recent Vitals</h3>
+                        <div class="metric-values">
+                            <div class="metric">
+                                <span class="value">120/80</span>
+                                <span class="label">Blood Pressure</span>
+                            </div>
+                            <div class="metric">
+                                <span class="value">72</span>
+                                <span class="label">Heart Rate (bpm)</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Test Reports -->
-                    <div class="test-reports">
-                        <h3>Test Reports</h3>
-                        <div class="report">
-                            <div class="icon-container blue-bg">
-                                <i class="material-icons">description</i>
-                            </div>
-                            <div class="report-details">
-                                <p class="title">CT Scan - Full Body</p>
-                                <p class="date">12th February 2020</p>
-                            </div>
-                        </div>
-                        <div class="report">
-                            <div class="icon-container yellow-bg">
-                                <i class="material-icons">science</i>
-                            </div>
-                            <div class="report-details">
-                                <p class="title">Creatine Kinase T</p>
-                                <p class="date">8th February 2020</p>
-                            </div>
-                        </div>
-                        <div class="report">
-                            <div class="icon-container red-bg">
-                                <i class="material-icons">visibility</i>
-                            </div>
-                            <div class="report-details">
-                                <p class="title">Eye Fluorescein Test</p>
-                                <p class="date">5th February 2020</p>
-                            </div>
-                        </div>
+                    <div class="analytics-card">
+                        <h3>Weight Trend</h3>
+                        <canvas id="weightChart"></canvas>
                     </div>
-
-                    <!-- Prescriptions -->
-                    <div class="prescriptions">
-                        <h3>Prescriptions</h3>
-                        <button class="add-prescription">
-                            <i class="material-icons">add</i> Add a prescription
-                        </button>
-                        <table class="prescription-table">
-                            <thead>
-                                <tr>
-                                    <th>Prescriptions</th>
-                                    <th>Date</th>
-                                    <th>Duration</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="title">Heart Diseases</td>
-                                    <td class="date">25th October 2019</td>
-                                    <td class="duration">3 months</td>
-                                </tr>
-                                <tr>
-                                    <td class="title">Skin Care</td>
-                                    <td class="date">8th August 2019</td>
-                                    <td class="duration">2 months</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                </section>
             </div>
         </main>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <div class="patient-profile">
+                <img src="https://i.pravatar.cc/150?img=7" alt="John Doe's Profile" class="patient-avatar">
+                <h3>John Doe</h3>
+                <p>Patient ID: 12345</p>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <h4>Next Appointment</h4>
+                    <div class="next-appointment">2 days</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Prescriptions</h4>
+                    <div class="total">3 Active</div>
+                </div>
+            </div>
+
+            <section class="alerts">
+                <h3>Reminders</h3>
+                <article class="alert">
+                    <div class="alert-icon new"></div>
+                    <div class="alert-content">
+                        <h4>Medication Refill</h4>
+                        <p>Due in 3 days</p>
+                    </div>
+                </article>
+                <article class="alert">
+                    <div class="alert-icon warning"></div>
+                    <div class="alert-content">
+                        <h4>Lab Test Results</h4>
+                        <p>Available now</p>
+                    </div>
+                </article>
+            </section>
+
+            <div class="promo-card">
+                <i class="material-icons promo-icon">local_hospital</i>
+                <h3>Need urgent care?</h3>
+                <button class="contact-btn">Contact Now</button>
+            </div>
+        </aside>
     </div>
-    <!--footer section -->
-
-  <section id="contact">
-    <footer id="footer">
-      <div class="footer-container">
-        <div class="footer-about">
-          <h3>MEDIHUB</h3>
-          <p>
-            Unmatched Expertise: Our team of specialists delivers top-tier, personalized care with the
-            latest in medical technology. Patient-Centered Care: We prioritize comfort and clarity,
-            making every patient feel valued and supported throughout.
-          </p>
-        </div>
-        <div class="footer-links">
-          <h4>Our Socials</h4>
-          <ul>
-            <li>
-              <a href="https://www.linkedin.com/in/benedict-ahura-96a2712ba/">
-                <img src="Assets/linkedin-brands-solid.svg" alt="LinkedIn">
-                <span>LinkedIn</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/home">
-                <img src="Assets/square-x-twitter-brands-solid.svg" alt="Twitter">
-                <span>Twitter</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/ic3._pop/?next=%2F">
-                <img src="Assets/square-instagram-brands-solid.svg" alt="Instagram">
-                <span>Instagram</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h4>Contact Us</h4>
-          <p>Email: <a href="mailto:popeahura@gmail.com">popeahura@gmail.com</a></p>
-          <p>Phone: +254-217-4088</p>
-          <p>Address: 123 Kinker Lane, Nairobi City</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 MEDIHUB website. All rights reserved.</p>
-      </div>
-    </footer>
-  </section>
-
-
-    <script src="P.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="patient.js"></script>
 </body>
 </html>
