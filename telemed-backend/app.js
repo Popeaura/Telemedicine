@@ -8,6 +8,9 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const db = require('./config/db'); // Import database connection
 const authenticate = require('./middleware/auth'); // Import authentication middleware
+const userRoutes = require('./routes/userRoutes');
+
+
 
 dotenv.config();
 
