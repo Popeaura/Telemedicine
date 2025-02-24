@@ -6,6 +6,8 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
+const db = require('./config/db'); // Import database connection
+const authenticate = require('./middleware/auth'); // Import authentication middleware
 
 dotenv.config();
 
@@ -16,35 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-const db = mysql.createConnection({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'telemed_db'
-});
-
-db.connect((err) => {
-  if (err) {
-    console.error('Failed to connect to database:', err);
-    process.exit(1);
-  }
-  console.log('Connected to MySQL database!');
-});
-
-const authenticate = (req, res, next) => {
-  const token = req.headers['authorization'];
-  if (!token) return res.status(403).send({ message: 'No token provided' });
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret-key');
-    req.userId = decoded.id;
-    next();
-  } catch (error) {
-    console.error('Token Verification Error:', error);
-    res.status(401).send({ message: 'Invalid token' });
-  }
-};
-
+// Register route
 app.post('/register', async (req, res) => {
   const { firstname, lastname, age, email, tel, username, password } = req.body;
 
@@ -88,6 +62,7 @@ app.post('/register', async (req, res) => {
   }
 });
 
+// Login route
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -123,6 +98,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
+// Fetch patient data (protected route)
 app.get('/patient-data', authenticate, (req, res) => {
   db.query('SELECT * FROM users WHERE id = ?', [req.userId], (err, results) => {
     if (err) {
@@ -148,10 +124,12 @@ app.get('/patient-data', authenticate, (req, res) => {
   });
 });
 
+// 404 handler for undefined routes
 app.use((req, res) => {
   res.status(404).json({ error: 'Endpoint not found' });
 });
 
+// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
